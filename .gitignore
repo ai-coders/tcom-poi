@@ -1,3 +1,5 @@
+[B|b]ak/
+*.[B|b]bak
 target/
 !.mvn/wrapper/maven-wrapper.jar
 

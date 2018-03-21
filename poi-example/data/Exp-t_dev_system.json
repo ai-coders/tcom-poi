@@ -1,0 +1,1109 @@
+{
+	"cName": "StoneShi",
+	"cTime": 1445961600000,
+	"code": "t_dev_system",
+	"dbms": "MySQL",
+	"devVersion": "0.2.0",
+	"id": "2c90804e62486e3c0162486e4d1a0000",
+	"mName": "StoneShi",
+	"mTime": 1521633611000,
+	"modCode": "dev",
+	"name": "系统定义",
+	"notes": "系统定义",
+	"status": "00_Draft",
+	"sysCode": "devp",
+	"tDevAttributes": [{
+		"cTime": 1521633611000,
+		"code": "abbr",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d3d0001",
+		"length": 10,
+		"mTime": 1521633611000,
+		"name": "系统代号简称",
+		"precise": 0,
+		"scale": 0,
+		"seq": 3,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "code",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d400002",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "系统代号",
+		"nnFlag": "Y",
+		"precise": 0,
+		"scale": 0,
+		"seq": 1,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": [{
+			"cTime": 1521633612000,
+			"id": "2c90804e62486e3c0162486e4ef2000f",
+			"mTime": 1521633612000,
+			"seq": 0,
+			"tDevAttribute": {
+				"$ref": "$.tDevAttributes[1]"
+			},
+			"tDevEntKey": {
+				"cTime": 1521633611000,
+				"code": "UQ_t_dev_system_code",
+				"id": "2c90804e62486e3c0162486e4ef2000e",
+				"mTime": 1521633611000,
+				"name": "唯一标识",
+				"notes": "唯一标识：系统代号",
+				"seq": 1,
+				"tDevEntRelationsForDestKeyId": [],
+				"tDevEntRelationsForSrcKeyId": [],
+				"tDevEntity": {
+					"$ref": "$"
+				},
+				"tDevKeyAttributes": [{
+					"$ref": "$.tDevAttributes[1].tDevKeyAttributes[0]"
+				}],
+				"type": "UQ"
+			}
+		}]
+	}, {
+		"cTime": 1521633611000,
+		"code": "c_name",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d400003",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "创建用户名",
+		"precise": 0,
+		"scale": 0,
+		"seq": 912,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "c_time",
+		"dataType": "Timestamp",
+		"id": "2c90804e62486e3c0162486e4d410004",
+		"length": 0,
+		"mTime": 1521633611000,
+		"name": "创建时间",
+		"precise": 0,
+		"scale": 0,
+		"seq": 913,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "c_uid",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d420005",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "创建用户号",
+		"precise": 0,
+		"scale": 0,
+		"seq": 911,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"aiFlag": "UUID",
+		"cTime": 1521633611000,
+		"code": "id",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d430006",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "记录编号",
+		"nnFlag": "Y",
+		"pkFlag": "Y",
+		"precise": 0,
+		"scale": 0,
+		"seq": 5,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": [{
+			"cTime": 1521633611000,
+			"id": "2c90804e62486e3c0162486e4ec3000d",
+			"mTime": 1521633611000,
+			"seq": 0,
+			"tDevAttribute": {
+				"$ref": "$.tDevAttributes[5]"
+			},
+			"tDevEntKey": {
+				"cTime": 1521633611000,
+				"code": "PK_t_dev_system",
+				"id": "2c90804e62486e3c0162486e4ebd000c",
+				"mTime": 1521633611000,
+				"name": "主键",
+				"notes": "主键",
+				"seq": 0,
+				"tDevEntRelationsForDestKeyId": [],
+				"tDevEntRelationsForSrcKeyId": [],
+				"tDevEntity": {
+					"$ref": "$"
+				},
+				"tDevKeyAttributes": [{
+					"$ref": "$.tDevAttributes[5].tDevKeyAttributes[0]"
+				}],
+				"type": "PK"
+			}
+		}],
+		"uqFlag": "Y"
+	}, {
+		"cTime": 1521633611000,
+		"code": "m_name",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d430007",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "修改用户名",
+		"precise": 0,
+		"scale": 0,
+		"seq": 922,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "m_time",
+		"dataType": "Timestamp",
+		"id": "2c90804e62486e3c0162486e4d440008",
+		"length": 0,
+		"mTime": 1521633611000,
+		"name": "修改时间",
+		"precise": 0,
+		"scale": 0,
+		"seq": 923,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "m_uid",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d450009",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "修改用户号",
+		"precise": 0,
+		"scale": 0,
+		"seq": 921,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "name",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d45000a",
+		"length": 50,
+		"mTime": 1521633611000,
+		"name": "系统名称",
+		"nnFlag": "Y",
+		"precise": 0,
+		"scale": 0,
+		"seq": 2,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}, {
+		"cTime": 1521633611000,
+		"code": "notes",
+		"dataType": "String",
+		"id": "2c90804e62486e3c0162486e4d46000b",
+		"length": 255,
+		"mTime": 1521633611000,
+		"name": "描述",
+		"precise": 0,
+		"scale": 0,
+		"seq": 900,
+		"tDevEntity": {
+			"$ref": "$"
+		},
+		"tDevErAttributesForDestAttrId": [],
+		"tDevErAttributesForSrcAttrId": [],
+		"tDevKeyAttributes": []
+	}],
+	"tDevEntKeys": [{
+		"$ref": "$.tDevAttributes[5].tDevKeyAttributes[0].tDevEntKey"
+	}, {
+		"$ref": "$.tDevAttributes[1].tDevKeyAttributes[0].tDevEntKey"
+	}],
+	"tDevEntRelationsForDestEntId": [{
+		"cTime": 1521633612000,
+		"destKeyCode": "UQ_t_dev_system_code",
+		"destMulti": "1.0",
+		"id": "2c90804e62486e3c0162486e51670023",
+		"mTime": 1521633612000,
+		"notes": "外键：系统代号",
+		"srcKeyCode": "FK_t_dev_module_system",
+		"srcMulti": "*",
+		"tDevEntityByDestEntId": {
+			"$ref": "$"
+		},
+		"tDevEntityBySrcEntId": {
+			"cName": "StoneShi",
+			"cTime": 1445961600000,
+			"code": "t_dev_module",
+			"dbms": "MySQL",
+			"devVersion": "0.2.0",
+			"id": "2c90804e62486e3c0162486e50230010",
+			"mName": "StoneShi",
+			"mTime": 1521633612000,
+			"modCode": "dev",
+			"name": "模块定义",
+			"notes": "模块定义",
+			"status": "00_Draft",
+			"sysCode": "devp",
+			"tDevAttributes": [{
+				"cTime": 1521633612000,
+				"code": "code",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50240011",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "模块代号",
+				"nnFlag": "Y",
+				"precise": 0,
+				"scale": 0,
+				"seq": 3,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [{
+					"cTime": 1521633612000,
+					"destAttrCode": "code",
+					"id": "2c90804e62486e3c0162486e51670024",
+					"mTime": 1521633612000,
+					"seq": 0,
+					"srcAttrCode": "sys_code",
+					"tDevAttributeByDestAttrId": {
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0]"
+					},
+					"tDevAttributeBySrcAttrId": {
+						"cTime": 1521633612000,
+						"code": "sys_code",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e502c001e",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "系统代号",
+						"nnFlag": "Y",
+						"precise": 0,
+						"scale": 0,
+						"seq": 1,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [{
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0]"
+						}],
+						"tDevKeyAttributes": [{
+							"cTime": 1521633612000,
+							"id": "2c90804e62486e3c0162486e510a0022",
+							"mTime": 1521633612000,
+							"seq": 0,
+							"tDevAttribute": {
+								"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId"
+							},
+							"tDevEntKey": {
+								"cTime": 1521633612000,
+								"code": "UQ_t_dev_modue_full_code",
+								"id": "2c90804e62486e3c0162486e51090021",
+								"mTime": 1521633612000,
+								"name": "唯一标识",
+								"notes": "唯一标识：系统代号+模块全代号",
+								"seq": 1,
+								"tDevEntRelationsForDestKeyId": [],
+								"tDevEntRelationsForSrcKeyId": [],
+								"tDevEntity": {
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+								},
+								"tDevKeyAttributes": [{
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId.tDevKeyAttributes[0]"
+								}],
+								"type": "UQ"
+							}
+						}]
+					},
+					"tDevEntRelation": {
+						"$ref": "$.tDevEntRelationsForDestEntId[0]"
+					}
+				}],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "c_name",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50250012",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "创建用户名",
+				"precise": 0,
+				"scale": 0,
+				"seq": 912,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "c_time",
+				"dataType": "Timestamp",
+				"id": "2c90804e62486e3c0162486e50250013",
+				"length": 0,
+				"mTime": 1521633612000,
+				"name": "创建时间",
+				"precise": 0,
+				"scale": 0,
+				"seq": 913,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "c_uid",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50260014",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "创建用户号",
+				"precise": 0,
+				"scale": 0,
+				"seq": 911,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "full_code",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50260015",
+				"length": 255,
+				"mTime": 1521633612000,
+				"name": "模块全代号",
+				"nnFlag": "Y",
+				"notes": "含父级别模块代号",
+				"precise": 0,
+				"scale": 0,
+				"seq": 2,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"aiFlag": "UUID",
+				"cTime": 1521633612000,
+				"code": "id",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50280016",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "记录编号",
+				"nnFlag": "Y",
+				"pkFlag": "Y",
+				"precise": 0,
+				"scale": 0,
+				"seq": 5,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [{
+					"cTime": 1521633612000,
+					"destAttrCode": "id",
+					"id": "2c90804e62486e3c0162486e51980026",
+					"mTime": 1521633612000,
+					"seq": 0,
+					"srcAttrCode": "parent_id",
+					"tDevAttributeByDestAttrId": {
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5]"
+					},
+					"tDevAttributeBySrcAttrId": {
+						"cTime": 1521633612000,
+						"code": "parent_id",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e502b001c",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "父模块记录号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 610,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [{
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevErAttributesForDestAttrId[0]"
+						}],
+						"tDevKeyAttributes": []
+					},
+					"tDevEntRelation": {
+						"cTime": 1521633612000,
+						"destKeyCode": "PK_t_dev_module ",
+						"destMulti": "1.0",
+						"id": "2c90804e62486e3c0162486e51970025",
+						"mTime": 1521633612000,
+						"notes": "外键：模块子模块",
+						"srcKeyCode": "FK_t_dev_module_module",
+						"srcMulti": "*",
+						"tDevEntityByDestEntId": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+						},
+						"tDevEntityBySrcEntId": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributes": [{
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevErAttributesForDestAttrId[0]"
+						}],
+						"type": "FK"
+					}
+				}],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": [{
+					"cTime": 1521633612000,
+					"id": "2c90804e62486e3c0162486e50ef0020",
+					"mTime": 1521633612000,
+					"seq": 0,
+					"tDevAttribute": {
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5]"
+					},
+					"tDevEntKey": {
+						"cTime": 1521633612000,
+						"code": "PK_t_dev_module",
+						"id": "2c90804e62486e3c0162486e50ee001f",
+						"mTime": 1521633612000,
+						"name": "主键_模块定义",
+						"notes": "主键",
+						"seq": 0,
+						"tDevEntRelationsForDestKeyId": [],
+						"tDevEntRelationsForSrcKeyId": [],
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+						},
+						"tDevKeyAttributes": [{
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevKeyAttributes[0]"
+						}],
+						"type": "PK"
+					}
+				}],
+				"uqFlag": "Y"
+			}, {
+				"cTime": 1521633612000,
+				"code": "m_name",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e50290017",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "修改用户名",
+				"precise": 0,
+				"scale": 0,
+				"seq": 922,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "m_time",
+				"dataType": "Timestamp",
+				"id": "2c90804e62486e3c0162486e50290018",
+				"length": 0,
+				"mTime": 1521633612000,
+				"name": "修改时间",
+				"precise": 0,
+				"scale": 0,
+				"seq": 923,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "m_uid",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e502a0019",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "修改用户号",
+				"precise": 0,
+				"scale": 0,
+				"seq": 921,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "name",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e502a001a",
+				"length": 50,
+				"mTime": 1521633612000,
+				"name": "模块名称",
+				"nnFlag": "Y",
+				"precise": 0,
+				"scale": 0,
+				"seq": 4,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"cTime": 1521633612000,
+				"code": "notes",
+				"dataType": "String",
+				"id": "2c90804e62486e3c0162486e502b001b",
+				"length": 255,
+				"mTime": 1521633612000,
+				"name": "描述",
+				"precise": 0,
+				"scale": 0,
+				"seq": 900,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId"
+			}, {
+				"cTime": 1521633612000,
+				"code": "seq",
+				"dataType": "Integer",
+				"id": "2c90804e62486e3c0162486e502c001d",
+				"length": 0,
+				"mTime": 1521633612000,
+				"name": "序号",
+				"precise": 0,
+				"scale": 0,
+				"seq": 5,
+				"tDevEntity": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevErAttributesForDestAttrId": [],
+				"tDevErAttributesForSrcAttrId": [],
+				"tDevKeyAttributes": []
+			}, {
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId"
+			}],
+			"tDevEntKeys": [{
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevKeyAttributes[0].tDevEntKey"
+			}, {
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId.tDevKeyAttributes[0].tDevEntKey"
+			}],
+			"tDevEntRelationsForDestEntId": [{
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevErAttributesForDestAttrId[0].tDevEntRelation"
+			}, {
+				"cTime": 1521633613000,
+				"destKeyCode": "PK_t_dev_module",
+				"id": "2c90804e62486e3c0162486e5349003f",
+				"mTime": 1521633613000,
+				"notes": "外键：模块记录号",
+				"srcKeyCode": "FK_t_dev_entity_module",
+				"tDevEntityByDestEntId": {
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId"
+				},
+				"tDevEntityBySrcEntId": {
+					"cName": "StoneShi",
+					"cTime": 1445961600000,
+					"code": "t_dev_entity",
+					"dbms": "MySQL",
+					"devVersion": "0.2.0",
+					"id": "2c90804e62486e3c0162486e52440027",
+					"mName": "StoneShi",
+					"mTime": 1521633612000,
+					"modCode": "dev",
+					"name": "实体定义",
+					"notes": "实体定义",
+					"status": "00_Draft",
+					"sysCode": "devp",
+					"tDevAttributes": [{
+						"cTime": 1521633612000,
+						"code": "code",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52450028",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "实体代号",
+						"nnFlag": "Y",
+						"precise": 0,
+						"scale": 0,
+						"seq": 1,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": [{
+							"cTime": 1521633613000,
+							"id": "2c90804e62486e3c0162486e5326003e",
+							"mTime": 1521633613000,
+							"seq": 0,
+							"tDevAttribute": {
+								"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[0]"
+							},
+							"tDevEntKey": {
+								"cTime": 1521633613000,
+								"code": "UQ_t_dev_entity_code",
+								"id": "2c90804e62486e3c0162486e5325003d",
+								"mTime": 1521633613000,
+								"name": "唯一标识",
+								"notes": "唯一标识：实体代号",
+								"seq": 1,
+								"tDevEntRelationsForDestKeyId": [],
+								"tDevEntRelationsForSrcKeyId": [],
+								"tDevEntity": {
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+								},
+								"tDevKeyAttributes": [{
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[0].tDevKeyAttributes[0]"
+								}],
+								"type": "UQ"
+							}
+						}],
+						"uqFlag": "Y"
+					}, {
+						"cTime": 1521633612000,
+						"code": "c_name",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52450029",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "创建用户名",
+						"precise": 0,
+						"scale": 0,
+						"seq": 912,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "c_time",
+						"dataType": "Timestamp",
+						"id": "2c90804e62486e3c0162486e5245002a",
+						"length": 0,
+						"mTime": 1521633612000,
+						"name": "创建时间",
+						"precise": 0,
+						"scale": 0,
+						"seq": 913,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "c_uid",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e5246002b",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "创建用户号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 911,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "dbms",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e5246002c",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "数据库类型",
+						"precise": 0,
+						"scale": 0,
+						"seq": 6,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "dev_version",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e5246002d",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "版本号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 10,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"aiFlag": "UUID",
+						"cTime": 1521633612000,
+						"code": "id",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e5247002e",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "记录编号",
+						"nnFlag": "Y",
+						"pkFlag": "Y",
+						"precise": 0,
+						"scale": 0,
+						"seq": 6,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [{
+							"cTime": 1521633613000,
+							"destAttrCode": "id",
+							"id": "2c90804e62486e3c0162486e534a0040",
+							"mTime": 1521633613000,
+							"seq": 0,
+							"srcAttrCode": "mod_id",
+							"tDevAttributeByDestAttrId": {
+								"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6]"
+							},
+							"tDevAttributeBySrcAttrId": {
+								"cTime": 1521633612000,
+								"code": "mod_id",
+								"dataType": "String",
+								"id": "2c90804e62486e3c0162486e52470030",
+								"length": 50,
+								"mTime": 1521633612000,
+								"name": "模块记录号",
+								"precise": 0,
+								"scale": 0,
+								"seq": 610,
+								"tDevEntity": {
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+								},
+								"tDevErAttributesForDestAttrId": [],
+								"tDevErAttributesForSrcAttrId": [{
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6].tDevErAttributesForDestAttrId[0]"
+								}],
+								"tDevKeyAttributes": []
+							},
+							"tDevEntRelation": {
+								"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1]"
+							}
+						}],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": [{
+							"cTime": 1521633613000,
+							"id": "2c90804e62486e3c0162486e5309003c",
+							"mTime": 1521633613000,
+							"seq": 0,
+							"tDevAttribute": {
+								"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6]"
+							},
+							"tDevEntKey": {
+								"cTime": 1521633613000,
+								"code": "PK_t_dev_entity",
+								"id": "2c90804e62486e3c0162486e5308003b",
+								"mTime": 1521633613000,
+								"name": "主键",
+								"notes": "主键",
+								"seq": 0,
+								"tDevEntRelationsForDestKeyId": [],
+								"tDevEntRelationsForSrcKeyId": [],
+								"tDevEntity": {
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+								},
+								"tDevKeyAttributes": [{
+									"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6].tDevKeyAttributes[0]"
+								}],
+								"type": "PK"
+							}
+						}],
+						"uqFlag": "Y"
+					}, {
+						"cTime": 1521633612000,
+						"code": "mod_code",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e5247002f",
+						"length": 255,
+						"mTime": 1521633612000,
+						"name": "模块代号",
+						"notes": "含父级别模块代号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 4,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": [],
+						"uqFlag": "Y"
+					}, {
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6].tDevErAttributesForDestAttrId[0].tDevAttributeBySrcAttrId"
+					}, {
+						"cTime": 1521633612000,
+						"code": "m_name",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52480031",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "修改用户名",
+						"precise": 0,
+						"scale": 0,
+						"seq": 922,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "m_time",
+						"dataType": "Timestamp",
+						"id": "2c90804e62486e3c0162486e52480032",
+						"length": 0,
+						"mTime": 1521633612000,
+						"name": "修改时间",
+						"precise": 0,
+						"scale": 0,
+						"seq": 923,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "m_uid",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52480033",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "修改用户号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 921,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "name",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52490034",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "实体名称",
+						"nnFlag": "Y",
+						"precise": 0,
+						"scale": 0,
+						"seq": 2,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "notes",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e52490035",
+						"length": 255,
+						"mTime": 1521633612000,
+						"name": "描述",
+						"precise": 0,
+						"scale": 0,
+						"seq": 900,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "owner",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e524a0036",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "数据库用户",
+						"precise": 0,
+						"scale": 0,
+						"seq": 7,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "phase",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e524a0037",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "开发阶段",
+						"precise": 0,
+						"scale": 0,
+						"seq": 9,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "seq",
+						"dataType": "Integer",
+						"id": "2c90804e62486e3c0162486e524a0038",
+						"length": 0,
+						"mTime": 1521633612000,
+						"name": "序号",
+						"precise": 0,
+						"scale": 0,
+						"seq": 5,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "status",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e524b0039",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "开发状态",
+						"notes": "00_Draft,20_Official,60_Dev,80_GoLive",
+						"precise": 0,
+						"scale": 0,
+						"seq": 8,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": []
+					}, {
+						"cTime": 1521633612000,
+						"code": "sys_code",
+						"dataType": "String",
+						"id": "2c90804e62486e3c0162486e524b003a",
+						"length": 50,
+						"mTime": 1521633612000,
+						"name": "系统代号",
+						"nnFlag": "Y",
+						"precise": 0,
+						"scale": 0,
+						"seq": 3,
+						"tDevEntity": {
+							"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId"
+						},
+						"tDevErAttributesForDestAttrId": [],
+						"tDevErAttributesForSrcAttrId": [],
+						"tDevKeyAttributes": [],
+						"uqFlag": "Y"
+					}],
+					"tDevEntKeys": [{
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6].tDevKeyAttributes[0].tDevEntKey"
+					}, {
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[0].tDevKeyAttributes[0].tDevEntKey"
+					}],
+					"tDevEntRelationsForDestEntId": [],
+					"tDevEntRelationsForSrcEntId": [{
+						"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1]"
+					}]
+				},
+				"tDevErAttributes": [{
+					"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevEntRelationsForDestEntId[1].tDevEntityBySrcEntId.tDevAttributes[6].tDevErAttributesForDestAttrId[0]"
+				}],
+				"type": "FK"
+			}],
+			"tDevEntRelationsForSrcEntId": [{
+				"$ref": "$.tDevEntRelationsForDestEntId[0]"
+			}, {
+				"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[5].tDevErAttributesForDestAttrId[0].tDevEntRelation"
+			}]
+		},
+		"tDevErAttributes": [{
+			"$ref": "$.tDevEntRelationsForDestEntId[0].tDevEntityBySrcEntId.tDevAttributes[0].tDevErAttributesForDestAttrId[0]"
+		}],
+		"type": "FK"
+	}],
+	"tDevEntRelationsForSrcEntId": []
+}
