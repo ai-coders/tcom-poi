@@ -9,7 +9,9 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
+//import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -61,28 +63,41 @@ public class ExcelUtil {
 		return workbook;
 	}
 	
-//	 /**  
-//   * 把一个excel中的cellstyletable复制到另一个excel，这里会报错，不能用这种方法，不明白呀？？？？？  
-//   * @param fromBook  
-//   * @param toBook  
-//   */  
-//  public static void copyBookCellStyle(Workbook fromBook,Workbook toBook){  
-//      for(short i=0;i<fromBook.getNumCellStyles();i++){  
-//          CellStyle fromStyle=fromBook.getCellStyleAt(i);  
-//          CellStyle toStyle=toBook.getCellStyleAt(i);  
-//          if(toStyle==null){  
-//              toStyle=toBook.createCellStyle();  
-//          }  
-//          copyCellStyle(fromStyle,toStyle);  
-//      }  
-//  }  
     /** 
      * 复制一个单元格样式到目的单元格样式 
      * @param fromStyle 
      * @param toStyle 
      */  
     public static void copyCellStyle(CellStyle fromStyle,  
-            CellStyle toStyle) {  
+            CellStyle toStyle) {
+    	toStyle.cloneStyleFrom(fromStyle);
+
+/**   For POI 3.17 	
+    	toStyle.setAlignment(fromStyle.getAlignmentEnum());
+    	toStyle.setBorderBottom(fromStyle.getBorderBottomEnum());
+    	toStyle.setBorderLeft(fromStyle.getBorderLeftEnum());
+    	toStyle.setBorderRight(fromStyle.getBorderRightEnum());
+    	toStyle.setBorderTop(fromStyle.getBorderTopEnum());
+    	toStyle.setBottomBorderColor(fromStyle.getBottomBorderColor());
+    	toStyle.setDataFormat(fromStyle.getDataFormat());
+    	toStyle.setFillBackgroundColor(fromStyle.getFillBackgroundColor());
+    	toStyle.setFillForegroundColor(fromStyle.getFillForegroundColor());
+    	toStyle.setFillPattern(fromStyle.getFillPatternEnum());
+    	toStyle.setFont(arg0);
+    	toStyle.setHidden(fromStyle.getHidden());
+    	toStyle.setIndention(fromStyle.getIndention());
+    	toStyle.setLeftBorderColor(fromStyle.getLeftBorderColor());
+    	toStyle.setLocked(fromStyle.getLocked());
+    	toStyle.setQuotePrefixed(fromStyle.getQuotePrefixed());
+    	toStyle.setRightBorderColor(fromStyle.getRightBorderColor());
+    	toStyle.setRotation(fromStyle.getRotation());
+    	toStyle.setShrinkToFit(fromStyle.getShrinkToFit());
+    	toStyle.setTopBorderColor(fromStyle.getTopBorderColor());
+    	toStyle.setVerticalAlignment(fromStyle.getVerticalAlignmentEnum());
+    	toStyle.setWrapText(fromStyle.getWrapText());
+**/
+
+ /**For POI 3.13
         toStyle.setAlignment(fromStyle.getAlignment()); 
         
         //边框和边框颜色  
@@ -107,7 +122,8 @@ public class ExcelUtil {
         toStyle.setLocked(fromStyle.getLocked());  
         toStyle.setRotation(fromStyle.getRotation());//旋转  
         toStyle.setVerticalAlignment(fromStyle.getVerticalAlignment());  
-        toStyle.setWrapText(fromStyle.getWrapText());  
+        toStyle.setWrapText(fromStyle.getWrapText()); 
+**/        
     }
     
     /** 
@@ -168,24 +184,18 @@ public class ExcelUtil {
      */  
     public static void copyCell(Workbook wb,Cell srcCell, Cell distCell,  
             boolean copyValueFlag) {
+    	//样式
     	CellStyle distCellStyle = srcCell.getCellStyle();
     	distCell.setCellStyle(distCellStyle);
 
-    	/* marked by stone set srcCell Style to distCell Style
-        CellStyle newstyle=wb.createCellStyle();  
-        copyCellStyle(srcCell.getCellStyle(), newstyle);  
-        // distCell.setEncoding(srcCell.getEncoding()); //srcCell.getEncoding()方法不存在
-        //样式  
-        distCell.setCellStyle(newstyle); 
-        */
-    	
         //评论  
         if (srcCell.getCellComment() != null) {  
             distCell.setCellComment(srcCell.getCellComment());  
         } 
-        
+
+/** POI 3.13
         // 不同数据类型处理  
-        int srcCellType = srcCell.getCellType();  
+        int srcCellType = srcCell.getCellType(); 
         distCell.setCellType(srcCellType);  
         
         if (copyValueFlag) {  
@@ -207,14 +217,48 @@ public class ExcelUtil {
                 distCell.setCellFormula(srcCell.getCellFormula());  
             } else { // nothing29  
             }  
-        }  
+        } 
+**/
+        // POI 3.17
+        // 不同数据类型处理  
+        CellType srcCellType = srcCell.getCellTypeEnum();
+        distCell.setCellType(srcCellType);  
+        if (copyValueFlag) {
+        	switch(srcCellType){
+        	case _NONE:
+        		log.error("Unknown srcCellType!");
+        		break;
+        	case NUMERIC:
+                if (DateUtil.isCellDateFormatted(srcCell)) {  
+                    distCell.setCellValue(srcCell.getDateCellValue());  
+                } else {  
+                    distCell.setCellValue(srcCell.getNumericCellValue());  
+                }  
+                break;
+        	case STRING:
+        		distCell.setCellValue(srcCell.getRichStringCellValue());  
+        		break;
+        	case FORMULA:
+        		distCell.setCellFormula(srcCell.getCellFormula());
+        		break;
+        	case BLANK:
+        		//do nothing
+        		break;
+        	case BOOLEAN:
+        		 distCell.setCellValue(srcCell.getBooleanCellValue()); 
+        		break;
+        	case ERROR:
+        		distCell.setCellErrorValue(srcCell.getErrorCellValue());
+        		break;
+        	}
+        }
     } 
     
     public static Object readCellFormula(Cell cell){
     	Object cellValue = null;
     	
-        int cellType = cell.getCellType();
-        if(cellType == Cell.CELL_TYPE_FORMULA){
+        CellType cellType = cell.getCellTypeEnum();
+        if(cellType == CellType.FORMULA){
         	cellValue = cell.getCellFormula(); 
         }
   	
@@ -222,59 +266,78 @@ public class ExcelUtil {
    }
     
 	public static Object readCellValue(Cell cell) {
+		boolean bCellValue = true;
+		return readCell(cell,bCellValue);
+	}
+
+	public static Object readCell(Cell cell) {
+		boolean bCellValue = false;
+		return readCell(cell,bCellValue);
+	}
+	
+	private static Object readCell(Cell cell, boolean bCellValue) {
 		Object cellValue = null;
 		// 不同数据类型处理
-		int cellType = cell.getCellType();
+
+		CellType cellType = cell.getCellTypeEnum();
 		
 		switch (cellType) {
-		case Cell.CELL_TYPE_NUMERIC:
+    	case _NONE:
+    		log.error("Unknown srcCellType!");
+    		break;
+    	case NUMERIC:
 			if (DateUtil.isCellDateFormatted(cell)) {
 				cellValue = cell.getDateCellValue();
 			} else {
 				cellValue = cell.getNumericCellValue();
 			}
 			break;
-		case Cell.CELL_TYPE_STRING:
-			cellValue =  String.valueOf(cell.getRichStringCellValue());
-			break;
-		case Cell.CELL_TYPE_FORMULA:
-			// cellValue = cell.getCellFormula();
-			try {
-				/*
-				 * 此处判断使用公式生成的字符串有问题，因为HSSFDateUtil.isCellDateFormatted(cell)
-				 * 判断过程中cell
-				 * .getNumericCellValue();方法会抛出java.lang.NumberFormatException异常
-				 */
-				if (DateUtil.isCellDateFormatted(cell)) {
-					cellValue = cell.getDateCellValue();
-					break;
-				} else {
-					cellValue = cell.getNumericCellValue();
+    	case STRING:
+	   		if(!bCellValue){
+	   			cellValue = cell.getRichStringCellValue();
+	   		}else{
+	   			cellValue =  String.valueOf(cell.getRichStringCellValue());
+	   		}
+    		break;
+    	case FORMULA:
+    		if(!bCellValue){
+    			cellValue = cell.getCellFormula();
+    		}else{
+				try {
+					if (DateUtil.isCellDateFormatted(cell)) {
+						cellValue = cell.getDateCellValue();
+						break;
+					} else {
+						cellValue = cell.getNumericCellValue();
+					}
+				} catch (IllegalStateException e) {
+					cellValue = String.valueOf(cell.getRichStringCellValue());
 				}
-			} catch (IllegalStateException e) {
-				cellValue = String.valueOf(cell.getRichStringCellValue());
 			}
 			break;
-		case Cell.CELL_TYPE_BLANK:
-			break;
-		case Cell.CELL_TYPE_BOOLEAN:
-			cellValue = cell.getBooleanCellValue();
-			break;
-		case Cell.CELL_TYPE_ERROR:
+    	case BLANK:
+    		cellValue = null;
+    		break;
+    	case BOOLEAN:
+    		cellValue = cell.getBooleanCellValue();
+    		break;
+    	case ERROR:
 			cellValue = cell.getErrorCellValue();
-			break;
+    		break;
 		default:
+			cellValue = null;
 			break;
 		}
-		
+	
 	   	return cellValue;
 	}
-
+	
+/**
 	public static Object readCell(Cell cell) {
 		Object cellValue = null;
 
 		// 不同数据类型处理
-		int cellType = cell.getCellType();
+		CellType cellType = cell.getCellTypeEnum();
 		switch (cellType) {
 		case Cell.CELL_TYPE_NUMERIC:
 			if (DateUtil.isCellDateFormatted(cell)) {
@@ -306,4 +369,6 @@ public class ExcelUtil {
 
 		return cellValue;
 	}
+**/
+	
 }

@@ -3,6 +3,7 @@ package net.aicoder.tcom.poi.excel.writer;
 import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.Comment;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -51,20 +52,22 @@ public abstract class AbstractWriter implements IWriter {
 		if (AiStringUtil.isEmpty(formulaStr)) {
 			return;
 		}
+		
+        //CellType srcCellType = srcCell.getCellTypeEnum();
 		try {
 			String tempStr = formulaStr;
 			if (isRealForumla(tempStr)) {
-				cell.setCellType(Cell.CELL_TYPE_FORMULA);
+				cell.setCellType(CellType.FORMULA);
 				cell.setCellFormula(tempStr.substring(1));
 				if (isHyperLinkFormula(tempStr)) {
 					setLinkStyle(cell);
 				}
 			} else {
-				cell.setCellType(Cell.CELL_TYPE_STRING);
+				cell.setCellType(CellType.STRING);
 				cell.setCellValue(tempStr);
 			}
 		} catch (Throwable tx) {
-			cell.setCellType(Cell.CELL_TYPE_STRING);
+			cell.setCellType(CellType.STRING);
 			cell.setCellValue(formulaStr);
 		}
 	}
@@ -85,6 +88,7 @@ public abstract class AbstractWriter implements IWriter {
 		return isHperLink;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void writeComment(String commentStr) {
 		if (AiStringUtil.isEmpty(commentStr)) {
