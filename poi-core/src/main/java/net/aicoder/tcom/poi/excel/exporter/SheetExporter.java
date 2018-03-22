@@ -471,19 +471,23 @@ public class SheetExporter {
 	
 	private Object areaOutData(AreaDefine area, Object elderData){
 		Object dataObj = null;
+		Map<String, Object> outData = this.getDataContext().getOutData();
 		VariableAppoint areaDefaultVar = area.getAreaVarAppoint();
 		if (areaDefaultVar != null) {
 			//Object elderVardata = repeatDataItem;
 			Object elderVardata = elderData;
 			VariableDefine elderVarDefine = null;
-			VariableAppoint elementNameVar = sheetDefine.getSheetVar();
-			VariableAppoint repeatByVar = sheetDefine.getRepeatByVar();
+			VariableAppoint elementNameVar = sheetDefine.getSheetVar(); //$[entity]
+			VariableAppoint repeatByVar = sheetDefine.getRepeatByVar(); //$[entityList]
 			if (elementNameVar != null) {
 				elderVarDefine = elementNameVar.getVariableDefine();
+				Object elderVardataTmp = areaDefaultVar.dataValue(outData); //先从outData中的Map取值
+				if(elderVardataTmp != null){
+					elderVardata = elderVardataTmp;
+				}
 			} else if (repeatByVar != null) {
 				elderVarDefine = repeatByVar.getVariableDefine();
 			}
-			Map<String, Object> outData = this.getDataContext().getOutData();
 			dataObj = areaDefaultVar.dataValue(outData, elderVardata,
 					elderVarDefine);
 		}
