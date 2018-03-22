@@ -1,21 +1,23 @@
 package net.aicoder.tcom.poi.excel.writer;
 
-import org.apache.poi.common.usermodel.HyperlinkType;
+//import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
+//import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.Comment;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Drawing;
 import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Hyperlink;
+//import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import net.aicoder.tcom.poi.util.CellType;
+import net.aicoder.tcom.poi.util.HyperlinkType;
 import net.aicoder.tcom.tools.util.AiStringUtil;
 
 public abstract class AbstractWriter implements IWriter {
@@ -53,21 +55,26 @@ public abstract class AbstractWriter implements IWriter {
 			return;
 		}
 		
+    	//POI 3.13
+        int iCellType = cell.getCellType();
+        CellType cellType = CellType.forInt(iCellType);
+        
+        //POI 3.17
         //CellType srcCellType = srcCell.getCellTypeEnum();
 		try {
 			String tempStr = formulaStr;
 			if (isRealForumla(tempStr)) {
-				cell.setCellType(CellType.FORMULA);
+				cell.setCellType(CellType.FORMULA.getCode());
 				cell.setCellFormula(tempStr.substring(1));
 				if (isHyperLinkFormula(tempStr)) {
 					setLinkStyle(cell);
 				}
 			} else {
-				cell.setCellType(CellType.STRING);
+				cell.setCellType(CellType.STRING.getCode());
 				cell.setCellValue(tempStr);
 			}
 		} catch (Throwable tx) {
-			cell.setCellType(CellType.STRING);
+			cell.setCellType(CellType.STRING.getCode());
 			cell.setCellValue(formulaStr);
 		}
 	}
@@ -107,12 +114,14 @@ public abstract class AbstractWriter implements IWriter {
 
 	@Override
 	public void writeHyperlink(HyperlinkType linkType, String linkAddress) {
+/**	
 		//CreationHelper createHelper = workbook.getCreationHelper();
 		CreationHelper createHelper = workbook.getCreationHelper();
 		Hyperlink link = createHelper.createHyperlink(linkType);
 		link.setAddress(linkAddress);
 		cell.setHyperlink(link);
 		setLinkStyle(cell);
+**/
 	}
 	
 	private void setLinkStyle(Cell cell){

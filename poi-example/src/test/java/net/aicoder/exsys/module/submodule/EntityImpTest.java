@@ -19,11 +19,7 @@ import net.aicoder.exsys.module.submodule.service.IEntityImpService;
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = "classpath:devp/spring-mvc-devp.xml")
 @ContextConfiguration({
-	"classpath:spring-mvc-context.xml",
-	//"classpath:spring-mvc-aop.xml",
-	"classpath:hibernate4hib.xml",
-	//"classpath:spring-minidao.xml",
-	//"classpath:spring-mvc.xml",
+	//"classpath:spring-mvc-context.xml",
 	"classpath:poi/spring-mvc-poi.xml"
 	})
 public class EntityImpTest extends AbstractJUnit4SpringContextTests{

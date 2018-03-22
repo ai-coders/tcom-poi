@@ -359,14 +359,11 @@ public class SheetExporter {
 	}
 
 	private void applyTplMergedRegions(Object oneData, AreaInfo areaInfo,DataItemInfo currDIPosition) {
-		//AreaDefine area = areaInfo.getAreaDefine();
-		
 		List<CellRangeAddress> currTplMergedRegionList = areaInfo.getTplMergedRegionList();
 		Position currPosition = currDIPosition.getDIPosition();
 		log.debug("applyTplMergedRegions>> currPosition=" +currPosition.toString() 
 		+ ";currTplMergedRegionList num=" + currTplMergedRegionList.size());
 		
-		//int begRow = area.getTplBegin() - 1;
 		int begRow = 0;
 		for (CellRangeAddress tplRange : currTplMergedRegionList) {
 			int firstRow = currPosition.getRow() - 1
@@ -565,7 +562,7 @@ public class SheetExporter {
 		int outSheetIndex = -100;
 		if (tplSheet != null) {
 			if(!AiStringUtil.isEmpty(outSheetName)){
-				if(tplSheetName.toUpperCase().equals(outSheetName.toUpperCase())){
+				if(tplSheetName.equalsIgnoreCase(outSheetName)){
 					outSheet = tplSheet;
 				}else{
 					int tplSheetIndex = outWorkbook.getSheetIndex(tplSheet);

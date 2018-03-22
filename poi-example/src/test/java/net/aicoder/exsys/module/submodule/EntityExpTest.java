@@ -32,5 +32,4 @@ public class EntityExpTest extends AbstractJUnit4SpringContextTests{
 		entityExpController.expEntityList();
 		log.debug("TestCase End!");
 	}
-
 }

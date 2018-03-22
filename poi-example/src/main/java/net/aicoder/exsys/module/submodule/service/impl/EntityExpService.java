@@ -49,14 +49,8 @@ public class EntityExpService implements IEntityExpService{
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private List<TDevEntity>  listEntity(String sysLid){
 		List<TDevEntity> tDevEntityList = new ArrayList<TDevEntity>();
-		
-//		ID	No.	Name (physical name)	Name (logical name)		Description	System	Module	Status	Version	Author	Created date	Last Updated
-//		2c90804e5fcdf435015fcdf443c40000		t_dev_system	系统定义	系统定义	devp	dev	00_Draft	0.2.0	StoneShi	2015/10/28	2017/11/18
-//		2c90804e5fcdf435015fcdf448f00010		t_dev_module	模块定义	模块定义	devp	dev	00_Draft	0.2.0	StoneShi	2015/10/28	2017/11/18
-//		2c90804e5fcdf435015fcdf4500b0028		t_dev_entity	实体定义	实体定义	devp	dev	00_Draft	0.2.0	StoneShi	2015/10/28	2017/11/18
 		
 		Date dateNow = new Date();
 		TDevEntity entSystem = new TDevEntity();
@@ -85,7 +79,7 @@ public class EntityExpService implements IEntityExpService{
 		entModule.setMName("StoneShi");
 		entModule.setCTime(dateNow);
 		entModule.setMTime(dateNow);
-		tDevEntityList.add(entModule);
+		//tDevEntityList.add(entModule);
 		
 		TDevEntity entEntity = new TDevEntity();
 		entEntity.setId("2c90804e5fcdf435015fcdf4500b0028");
@@ -99,23 +93,8 @@ public class EntityExpService implements IEntityExpService{
 		entEntity.setMName("StoneShi");
 		entEntity.setCTime(dateNow);
 		entEntity.setMTime(dateNow);
-		tDevEntityList.add(entEntity);
-/**		
-		try{
-			String fileName = "data/Exp-EntityList.json";
-			File file = new File(fileName);
-			Path path = file.toPath();
-			List<TDevEntity> tDevEntityListTmp = null;
-			tDevEntityListTmp = JsonUtil.load(path, List.class);
-			for(TDevEntity entityTmp:tDevEntityListTmp){
-				String jsonStr = JsonUtil.serialize(entityTmp);
-				TDevEntity entity = JsonUtil.deserialize(jsonStr, TDevEntity.class);
-				tDevEntityList.add(entity);
-			}
-		}catch(IOException ioe){
-			log.error(ioe.getMessage());
-		}
-**/		
+		//tDevEntityList.add(entEntity);
+
 		return tDevEntityList;
 	}
 

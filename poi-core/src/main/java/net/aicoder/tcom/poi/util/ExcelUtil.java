@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
+//import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 //import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
@@ -63,14 +63,156 @@ public class ExcelUtil {
 		return workbook;
 	}
 	
+    
+    /** 
+     * Sheet复制 
+     * @param fromSheet 
+     * @param toSheet 
+     * @param copyValueFlag 
+     */  
+    public static void copySheet(Workbook wb,Sheet fromSheet, Sheet toSheet,  
+            boolean copyValueFlag) {  
+        //合并区域处理  
+        mergerRegion(fromSheet, toSheet);  
+        for (Iterator<Row> rowIt = fromSheet.rowIterator(); rowIt.hasNext();) {  
+            Row tmpRow = (Row) rowIt.next();  
+            Row newRow = toSheet.createRow(tmpRow.getRowNum());  
+            //行复制  
+            copyRow(wb,tmpRow,newRow,copyValueFlag);  
+        }  
+    }
+    
+    /** 
+     * 行复制功能 
+     * @param fromRow 
+     * @param toRow 
+     */  
+    public static void copyRow(Workbook wb,Row fromRow,Row toRow,boolean copyValueFlag){
+    	toRow.setHeight(fromRow.getHeight());
+    	
+        for (Iterator<Cell> cellIt = fromRow.cellIterator(); cellIt.hasNext();) {  
+            Cell tmpCell = cellIt.next(); 
+            //Cell newCell = toRow.createCell(tmpCell.getCellNum()); //无tmpCell.getCellNum()方法
+            Cell newCell = toRow.createCell(tmpCell.getColumnIndex());
+            copyCell(wb,tmpCell, newCell, copyValueFlag);  
+        }  
+    }
+    
+    /** 
+    * 复制原有sheet的合并单元格到新创建的sheet 
+    *  
+    * @param sheetCreat 新创建sheet 
+    * @param sheet      原有的sheet 
+    */  
+    public static void mergerRegion(Sheet fromSheet, Sheet toSheet) {
+       int sheetMergerCount = fromSheet.getNumMergedRegions();  
+       for (int i = 0; i < sheetMergerCount; i++) {  
+        //Region mergedRegionAt = fromSheet.getMergedRegionAt(i); 
+    	CellRangeAddress mergedRegionAt = fromSheet.getMergedRegion(i);
+        toSheet.addMergedRegion(mergedRegionAt);  
+       }  
+    }
+    
+    /** 
+     * 复制单元格 
+     *  
+     * @param fromCell 
+     * @param toCell 
+     * @param copyValueFlag 
+     *            true则连同cell的内容一起复制 
+     */  
+ 	public static void copyCell(Workbook wb,Cell fromCell, Cell toCell,  
+            boolean copyValueFlag) {
+    	//样式
+    	CellStyle fromCellStyle = fromCell.getCellStyle();
+     	toCell.setCellStyle(fromCellStyle);
+    	//copyCellStyle(fromCell,toCell);
+
+        //评论
+/**     	
+        if (fromCell.getCellComment() != null) {  
+            toCell.setCellComment(fromCell.getCellComment());  
+        } 
+**/
+     	
+/** POI 3.13
+        // 不同数据类型处理  
+        int srcCellType = srcCell.getCellType(); 
+        distCell.setCellType(srcCellType);  
+        
+        if (copyValueFlag) {  
+            if (srcCellType == Cell.CELL_TYPE_NUMERIC) {  
+                if (DateUtil.isCellDateFormatted(srcCell)) {  
+                    distCell.setCellValue(srcCell.getDateCellValue());  
+                } else {  
+                    distCell.setCellValue(srcCell.getNumericCellValue());  
+                }  
+            } else if (srcCellType == Cell.CELL_TYPE_STRING) {  
+                distCell.setCellValue(srcCell.getRichStringCellValue());  
+            } else if (srcCellType == Cell.CELL_TYPE_BLANK) {  
+                // nothing21  
+            } else if (srcCellType == Cell.CELL_TYPE_BOOLEAN) {  
+                distCell.setCellValue(srcCell.getBooleanCellValue());  
+            } else if (srcCellType == Cell.CELL_TYPE_ERROR) {  
+                distCell.setCellErrorValue(srcCell.getErrorCellValue());  
+            } else if (srcCellType == Cell.CELL_TYPE_FORMULA) {  
+                distCell.setCellFormula(srcCell.getCellFormula());  
+            } else { // nothing29  
+            }  
+        } 
+**/
+     	// POI 3.13
+        int iSrcCellType = fromCell.getCellType();
+        CellType srcCellType = CellType.forInt(iSrcCellType);
+        toCell.setCellType(iSrcCellType); 
+
+        // POI 3.17
+        // 不同数据类型处理  
+         
+        //CellType srcCellType = fromCell.getCellTypeEnum();
+        //toCell.setCellType(srcCellType);  
+        if (copyValueFlag) {
+        	switch(srcCellType){
+        	case _NONE:
+        		log.error("Unknown srcCellType!");
+        		break;
+        	case NUMERIC:
+                if (DateUtil.isCellDateFormatted(fromCell)) {  
+                    toCell.setCellValue(fromCell.getDateCellValue());  
+                } else {  
+                    toCell.setCellValue(fromCell.getNumericCellValue());  
+                }  
+                break;
+        	case STRING:
+        		toCell.setCellValue(fromCell.getRichStringCellValue());  
+        		break;
+        	case FORMULA:
+        		toCell.setCellFormula(fromCell.getCellFormula());
+        		break;
+        	case BLANK:
+        		//do nothing
+        		break;
+        	case BOOLEAN:
+        		 toCell.setCellValue(fromCell.getBooleanCellValue()); 
+        		break;
+        	case ERROR:
+        		toCell.setCellErrorValue(fromCell.getErrorCellValue());
+        		break;
+        	}
+        }
+    }
+    
     /** 
      * 复制一个单元格样式到目的单元格样式 
      * @param fromStyle 
      * @param toStyle 
      */  
-    public static void copyCellStyle(CellStyle fromStyle,  
-            CellStyle toStyle) {
-    	toStyle.cloneStyleFrom(fromStyle);
+    //public static void copyCellStyle(CellStyle fromStyle, CellStyle toStyle) {
+    public static void copyCellStyle(Cell fromCell, Cell toCell) {
+    	CellStyle fromCellStyle = fromCell.getCellStyle();
+       	CellStyle toCellStyle = toCell.getCellStyle();
+       	
+       	toCellStyle.cloneStyleFrom(fromCellStyle);
 
 /**   For POI 3.17 	
     	toStyle.setAlignment(fromStyle.getAlignmentEnum());
@@ -124,140 +266,16 @@ public class ExcelUtil {
         toStyle.setVerticalAlignment(fromStyle.getVerticalAlignment());  
         toStyle.setWrapText(fromStyle.getWrapText()); 
 **/        
-    }
-    
-    /** 
-     * Sheet复制 
-     * @param fromSheet 
-     * @param toSheet 
-     * @param copyValueFlag 
-     */  
-    public static void copySheet(Workbook wb,Sheet fromSheet, Sheet toSheet,  
-            boolean copyValueFlag) {  
-        //合并区域处理  
-        mergerRegion(fromSheet, toSheet);  
-        for (Iterator<Row> rowIt = fromSheet.rowIterator(); rowIt.hasNext();) {  
-            Row tmpRow = (Row) rowIt.next();  
-            Row newRow = toSheet.createRow(tmpRow.getRowNum());  
-            //行复制  
-            copyRow(wb,tmpRow,newRow,copyValueFlag);  
-        }  
-    }  
-    /** 
-     * 行复制功能 
-     * @param fromRow 
-     * @param toRow 
-     */  
-    public static void copyRow(Workbook wb,Row fromRow,Row toRow,boolean copyValueFlag){
-    	toRow.setHeight(fromRow.getHeight());
-    	
-        for (Iterator<Cell> cellIt = fromRow.cellIterator(); cellIt.hasNext();) {  
-            Cell tmpCell = cellIt.next(); 
-            //Cell newCell = toRow.createCell(tmpCell.getCellNum()); //无tmpCell.getCellNum()方法
-            Cell newCell = toRow.createCell(tmpCell.getColumnIndex());
-            copyCell(wb,tmpCell, newCell, copyValueFlag);  
-        }  
-    }
-    
-    /** 
-    * 复制原有sheet的合并单元格到新创建的sheet 
-    *  
-    * @param sheetCreat 新创建sheet 
-    * @param sheet      原有的sheet 
-    */  
-    public static void mergerRegion(Sheet fromSheet, Sheet toSheet) {
-       int sheetMergerCount = fromSheet.getNumMergedRegions();  
-       for (int i = 0; i < sheetMergerCount; i++) {  
-        //Region mergedRegionAt = fromSheet.getMergedRegionAt(i); 
-    	CellRangeAddress mergedRegionAt = fromSheet.getMergedRegion(i);
-        toSheet.addMergedRegion(mergedRegionAt);  
-       }  
-    }
-    
-    /** 
-     * 复制单元格 
-     *  
-     * @param srcCell 
-     * @param distCell 
-     * @param copyValueFlag 
-     *            true则连同cell的内容一起复制 
-     */  
-    public static void copyCell(Workbook wb,Cell srcCell, Cell distCell,  
-            boolean copyValueFlag) {
-    	//样式
-    	CellStyle distCellStyle = srcCell.getCellStyle();
-    	distCell.setCellStyle(distCellStyle);
-
-        //评论  
-        if (srcCell.getCellComment() != null) {  
-            distCell.setCellComment(srcCell.getCellComment());  
-        } 
-
-/** POI 3.13
-        // 不同数据类型处理  
-        int srcCellType = srcCell.getCellType(); 
-        distCell.setCellType(srcCellType);  
-        
-        if (copyValueFlag) {  
-            if (srcCellType == Cell.CELL_TYPE_NUMERIC) {  
-                if (DateUtil.isCellDateFormatted(srcCell)) {  
-                    distCell.setCellValue(srcCell.getDateCellValue());  
-                } else {  
-                    distCell.setCellValue(srcCell.getNumericCellValue());  
-                }  
-            } else if (srcCellType == Cell.CELL_TYPE_STRING) {  
-                distCell.setCellValue(srcCell.getRichStringCellValue());  
-            } else if (srcCellType == Cell.CELL_TYPE_BLANK) {  
-                // nothing21  
-            } else if (srcCellType == Cell.CELL_TYPE_BOOLEAN) {  
-                distCell.setCellValue(srcCell.getBooleanCellValue());  
-            } else if (srcCellType == Cell.CELL_TYPE_ERROR) {  
-                distCell.setCellErrorValue(srcCell.getErrorCellValue());  
-            } else if (srcCellType == Cell.CELL_TYPE_FORMULA) {  
-                distCell.setCellFormula(srcCell.getCellFormula());  
-            } else { // nothing29  
-            }  
-        } 
-**/
-        // POI 3.17
-        // 不同数据类型处理  
-        CellType srcCellType = srcCell.getCellTypeEnum();
-        distCell.setCellType(srcCellType);  
-        if (copyValueFlag) {
-        	switch(srcCellType){
-        	case _NONE:
-        		log.error("Unknown srcCellType!");
-        		break;
-        	case NUMERIC:
-                if (DateUtil.isCellDateFormatted(srcCell)) {  
-                    distCell.setCellValue(srcCell.getDateCellValue());  
-                } else {  
-                    distCell.setCellValue(srcCell.getNumericCellValue());  
-                }  
-                break;
-        	case STRING:
-        		distCell.setCellValue(srcCell.getRichStringCellValue());  
-        		break;
-        	case FORMULA:
-        		distCell.setCellFormula(srcCell.getCellFormula());
-        		break;
-        	case BLANK:
-        		//do nothing
-        		break;
-        	case BOOLEAN:
-        		 distCell.setCellValue(srcCell.getBooleanCellValue()); 
-        		break;
-        	case ERROR:
-        		distCell.setCellErrorValue(srcCell.getErrorCellValue());
-        		break;
-        	}
-        }
-    } 
-    
+    }    
     public static Object readCellFormula(Cell cell){
     	Object cellValue = null;
     	
-        CellType cellType = cell.getCellTypeEnum();
+    	//POI 3.13
+        int iCellType = cell.getCellType();
+        CellType cellType = CellType.forInt(iCellType);
+        
+        //POI 3.17
+        //CellType cellType = cell.getCellTypeEnum();
         if(cellType == CellType.FORMULA){
         	cellValue = cell.getCellFormula(); 
         }
@@ -279,7 +297,12 @@ public class ExcelUtil {
 		Object cellValue = null;
 		// 不同数据类型处理
 
-		CellType cellType = cell.getCellTypeEnum();
+    	//POI 3.13
+        int iCellType = cell.getCellType();
+        CellType cellType = CellType.forInt(iCellType);
+        
+        //POI 3.17
+		//CellType cellType = cell.getCellTypeEnum();
 		
 		switch (cellType) {
     	case _NONE:

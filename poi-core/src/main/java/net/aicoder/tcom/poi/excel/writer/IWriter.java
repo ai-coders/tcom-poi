@@ -1,10 +1,12 @@
 package net.aicoder.tcom.poi.excel.writer;
 
-import org.apache.poi.common.usermodel.HyperlinkType;
+//import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
+import net.aicoder.tcom.poi.util.HyperlinkType;
 
 public interface IWriter {
 
