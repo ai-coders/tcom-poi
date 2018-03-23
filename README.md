@@ -6,7 +6,7 @@
 ## 1. 定义Excel导入/导出模板
 ### 1.1. 定义Excel导入/导出模板
         实例参见：tcom-poi\poi-example\data\Template\tbl_tpl.xlsx
-》模板定义参见：[Excel模板定义说明](README.md#二、Excel模板定义)
+》模板定义参见：[Excel模板定义说明](README.md#二excel模板定义)
 ### 1.2. 生成Excel导入/导出数据定义的配置文件
         通过Excel VBA读取模板定义，生成导入/导出数据定义的配置文件
         导入/导出VBA工具：tcom-poi\poi-example\data\Template\TplDefine2Xml.xlsm
@@ -87,9 +87,9 @@
 变量名，变量类名，该栏位是否不为空，子数据区的定义
 
 - 变量名定义<br>
-实例：\$\[:id\], 表示该变量为List中成员对象的属性名称，并且该情景下变量名是可以从上级变量续接的，即：单元格可从数据区域续接上，数据区域可从当前Sheet定义的变量进行续接。
-实例：\$\[entity.id\]，表示该变量为entity对象的属性名称。
-实例：\$\[:nnFlag,(Y=V)\]，其中(Y=V)表示导入\导出时进行数据转换的规则，即对象的数据值为Y时Excel显示值为V，导入时依据Excel的值转换为对象的数据值
+实例：\$\[:id\], 表示该变量为List中成员对象的属性名称，并且该情景下变量名是可以从上级变量续接的，即：单元格可从数据区域续接上，数据区域可从当前Sheet定义的变量进行续接。<br>
+实例：\$\[entity.id\]，表示该变量为entity对象的属性名称。<br>
+实例：\$\[:nnFlag,(Y=V)\]，其中(Y=V)表示导入\导出时进行数据转换的规则，即对象的数据值为Y时Excel显示值为V，导入时依据Excel的值转换为对象的数据值。
 
 - 变量类名
 实例：\{\*net.aicoder.exsys.module.entity.TDevKeyAttribute\}，定义当前变量所属的Class，如果前面有\*号，表示该变量是List类型，可动态输出
@@ -98,7 +98,7 @@
 该栏位是否不为空，表示：该字段作为数据导入时判断动态数据是否结束的标识。
 
 - 子数据区的定义
-作为数据区域内部循环的子数据区的定义，含义与以上 [1.2\)  数据区域定义](README.md#1.2\)  数据区域定义) 一致。
+作为数据区域内部循环的子数据区的定义，含义与以上 [数据区域定义](README.md#12--数据区域定义) 一致。
 实例：\<Area id="FK.AR" fillModel="Column" beginCell="L42" endCell="V44" variable="\$\[entity.TDevEntRelationsForSrcEntId:TDevErAttributes\]\{\*net.aicoder.exsys.module.entity.TDevErAttribute\}" \>
 
 ## 2. 生成数据定义的配置文件
