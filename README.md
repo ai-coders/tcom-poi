@@ -1,4 +1,3 @@
-
 # Excel文件导入/导出工具
 依据定义的Excel模板，结合程序生成相应的数据对象(POJO)，实现数据的导出为Excel文件；
 反之，将按Excel模板填写的文件，通过程序生成相应的数据对象(POJO)。
@@ -7,7 +6,7 @@
 ## 1. 定义Excel导入/导出模板
 ### 1.1. 定义Excel导入/导出模板
         实例参见：tcom-poi\poi-example\data\Template\tbl_tpl.xlsx
-        模板定义参见：二、Excel模板定义说明 #
+        模板定义参见：[二、Excel模板定义说明](https://github.com/ai-coders/tcom-poi/blob/master/README.md#二excel模板定义说明)
 ### 1.2. 生成Excel导入/导出数据定义的配置文件
         通过Excel VBA读取模板定义，生成导入/导出数据定义的配置文件
         导入/导出VBA工具：tcom-poi\poi-example\data\Template\TplDefine2Xml.xlsm
@@ -34,7 +33,7 @@
         实例参见Package: net.aicoder.exsys.module.submodule.*
 
 ----------
-# [二、Excel模板定义说明]
+# 二、Excel模板定义说明
 ## 1. Excel模板的构成
 ![](~/Excel_Tpl.jpg)
 
