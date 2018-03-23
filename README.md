@@ -1,4 +1,10 @@
-﻿# Excel文件导入/导出工具
+---
+date: 2018-03-23 17:27
+status: public
+title: README
+---
+
+# Excel文件导入/导出工具
 依据定义的Excel模板，结合程序生成相应的数据对象(POJO)，实现数据的导出为Excel文件；
 反之，将按Excel模板填写的文件，通过程序生成相应的数据对象(POJO)。
 
@@ -32,9 +38,11 @@
 ###2.8. 测试导入/导出功能(文件存放于测试目录)
         实例参见Package: net.aicoder.exsys.module.submodule.*
 
-
 ----------
 # 二、Excel模板定义说明
-##1. Excel模板的整体构成
-
+##1. Excel模板的构成
+![](~/Excel_Tpl.jpg)
+说明：
+Excel模板由2大部分构成，即：
+1、“模板控制区”，模板定义的控制信息，包括以下控制信息：
 
