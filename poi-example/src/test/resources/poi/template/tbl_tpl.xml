@@ -38,7 +38,7 @@
                 <Cell  pos="Y20" >$[entity.mTime]</Cell>
             </Row>
         </Area>
-        <Area id="TC" fillModel="Row" beginCell="B23" endCell="AG26" notNull="D23" titleNum="1" tplBegin="1" tplNum="1" dataBegin="2" dataEnd="-2" variable="$[entity.TDevAttributes]{*net.aicoder.exsys.module.entity.TDevAttribute}" >
+        <Area id="TC" fillModel="Row" beginCell="B23" endCell="AG26" notNull="D23" titleNum="1" tplBegin="1" tplNum="1" dataBegin="1" dataEnd="-1" variable="$[entity.TDevAttributes]{*net.aicoder.exsys.module.entity.TDevAttribute}" >
             <Row no="24" >
                 <Cell  pos="B24" >$[:id]</Cell>
                 <Cell  pos="C24" >$[:seq]</Cell>
@@ -56,7 +56,7 @@
                 <Cell  pos="Y24" >$[:notes]</Cell>
             </Row>
         </Area>
-        <Area id="KEY" fillModel="Row" beginCell="B29" endCell="AG37" notNull="D29" titleNum="2" tplBegin="2" tplNum="3" dataBegin="5" dataEnd="-2" variable="$[entity.TDevEntKeys]{*net.aicoder.exsys.module.entity.TDevEntKey}" >
+        <Area id="KEY" fillModel="Row" beginCell="B29" endCell="AG37" notNull="D29" titleNum="2" tplBegin="2" tplNum="3" dataBegin="2" dataEnd="-1" variable="$[entity.TDevEntKeys]{*net.aicoder.exsys.module.entity.TDevEntKey}" >
             <Row no="31" >
                 <Cell  pos="B31" >$[:id]</Cell>
                 <Cell  pos="C31" >$[:type]</Cell>
@@ -73,7 +73,7 @@
             </Column>
         </Area>
         </Area>
-        <Area id="FK" fillModel="Row" beginCell="B40" endCell="AG48" notNull="D40" titleNum="2" tplBegin="2" tplNum="3" dataBegin="5" dataEnd="-4" variable="$[entity.TDevEntRelationsForSrcEntId]{*net.aicoder.exsys.module.entity.TDevEntRelation}" >
+        <Area id="FK" fillModel="Row" beginCell="B40" endCell="AG48" notNull="D40" titleNum="2" tplBegin="2" tplNum="3" dataBegin="2" dataEnd="-1" variable="$[entity.TDevEntRelationsForSrcEntId]{*net.aicoder.exsys.module.entity.TDevEntRelation}" >
             <Row no="42" >
                 <Cell  pos="B42" >$[:id]</Cell>
                 <Cell  pos="C42" >$[:type]</Cell>

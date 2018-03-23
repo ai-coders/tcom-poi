@@ -79,7 +79,7 @@ public class EntityExpService implements IEntityExpService{
 		entModule.setMName("StoneShi");
 		entModule.setCTime(dateNow);
 		entModule.setMTime(dateNow);
-		//tDevEntityList.add(entModule);
+		tDevEntityList.add(entModule);
 		
 		TDevEntity entEntity = new TDevEntity();
 		entEntity.setId("2c90804e5fcdf435015fcdf4500b0028");
@@ -93,7 +93,7 @@ public class EntityExpService implements IEntityExpService{
 		entEntity.setMName("StoneShi");
 		entEntity.setCTime(dateNow);
 		entEntity.setMTime(dateNow);
-		//tDevEntityList.add(entEntity);
+		tDevEntityList.add(entEntity);
 
 		return tDevEntityList;
 	}
