@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import net.aicoder.tcom.poi.excel.exporter.IBookExporter;
 
 @Component
-//@Transactional
 public class EntityExpController {
 	private static final String KEY_SYS_CODE = "sysCode";
 
@@ -17,7 +16,6 @@ public class EntityExpController {
 	@Autowired
 	IBookExporter entityBookExporter;
 
-	//@Override
 	public void expEntityList(){
 		String sysCode = "devp";
 		log.debug("expEntityList>> key=" + KEY_SYS_CODE + "; value=" + sysCode);

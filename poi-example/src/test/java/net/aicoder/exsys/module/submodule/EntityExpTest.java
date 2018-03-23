@@ -18,7 +18,7 @@ import net.aicoder.exsys.module.submodule.service.IEntityExpService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
 	//"classpath:spring-mvc-context.xml",
-	"classpath:poi/spring-mvc-poi.xml"
+	"classpath:poi/spring-poi.xml"
 	})
 public class EntityExpTest extends AbstractJUnit4SpringContextTests{
 	private static final Log log = LogFactory.getLog(EntityExpTest.class);

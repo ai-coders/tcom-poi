@@ -20,7 +20,7 @@ import net.aicoder.exsys.module.submodule.service.IEntityImpService;
 //@ContextConfiguration(locations = "classpath:devp/spring-mvc-devp.xml")
 @ContextConfiguration({
 	//"classpath:spring-mvc-context.xml",
-	"classpath:poi/spring-mvc-poi.xml"
+	"classpath:poi/spring-poi.xml"
 	})
 public class EntityImpTest extends AbstractJUnit4SpringContextTests{
 	private static final Log log = LogFactory.getLog(EntityImpTest.class);

@@ -16,7 +16,6 @@ public class EntityImpController {
 	@Autowired
 	IBookImporter entityBookImporter;
 
-	//@Override
 	public void impEntityList() {
 		String sysCode = "devp";
 		log.debug("expEntityList>> key=" + KEY_SYS_CODE + "; value=" + sysCode);
