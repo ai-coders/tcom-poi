@@ -57,5 +57,3 @@
 |	B13	|	\$\[entity\]	|	Sheet数据取值的变量名	|
 |	B14	|	\$\[entityList:code\]	|	Sheet名称定义，可对应变量名也可为字符串常量	|
 
-
-
