@@ -5,9 +5,8 @@
 # 一、使用步骤
 ## 1. 定义Excel导入/导出模板
 ### 1.1. 定义Excel导入/导出模板
-        实例参见：tcom-poi\poi-example\data\Template\tbl_tpl.xlsx
-        模板定义参见：
-   [Excel模板定义说明](https://github.com/ai-coders/tcom-poi/blob/master/README.md#二excel模板定义说明)        
+        实例参见：tcom-poi\poi-example\data\Template\tbl_tpl.xlsx
+》模板定义参见：[Excel模板定义说明](~/README.md#二excel模板定义说明)
 ### 1.2. 生成Excel导入/导出数据定义的配置文件
         通过Excel VBA读取模板定义，生成导入/导出数据定义的配置文件
         导入/导出VBA工具：tcom-poi\poi-example\data\Template\TplDefine2Xml.xlsm
@@ -36,7 +35,7 @@
 ----------
 # 二、Excel模板定义说明
 ## 1. Excel模板的构成
-![](~/Excel_Tpl.jpg)
+![](~/poi-doc/images/Excel_Tpl.jpg)
 
 说明：
 Excel模板由2大部分构成，即：
