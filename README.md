@@ -77,8 +77,8 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 |	F10	|	3	|	模板行数/列	|
 |	F11	|	2	|	数据起始行/列(相对起始位)	|
 |	F12	|	\-1	|	数据结束行/列(相对结束位)	|
-|	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\}<br>，数据区域对应的变量名	|
-|F14未使用|  |该行无参数配置，写上这一条完全是为Readme文件排版更好看而已|
+|	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\}<br>，数据区域对应的变量名|
+|不需使用|  |该行无参数配置，写上这一条完全是为Readme文件排版更好看而已|
 
 
 ### (2) 数据区域
