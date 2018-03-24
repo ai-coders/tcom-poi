@@ -78,7 +78,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 |	F11	|	2	|	数据起始行/列(相对起始位)	|
 |	F12	|	\-1	|	数据结束行/列(相对结束位)	|
 |	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\}<br>，数据区域对应的变量名	|
-|	F14 |	|		|
+|	F14未使用 |	|		|(该行无参数配置，写上这一条完全是为Readme文件排版更好看而已)
 
 
 ### (2) 数据区域
@@ -92,7 +92,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 组成元素有：变量名，变量类名，该栏位是否不为空，子数据区的定义
 
 - 变量名定义<br>
-实例：\$\[:id\], 表示该变量为List中成员对象的属性名称，并且该情景下变量名是可以从上级变量续接的，即：单元格可从数据区域续接上，数据区域可从当前Sheet定义的变量进行续接。<br>
+实例：\$\[:id\], 表示该变量为List中成员对象的属性名称，并且该情景下变量名是可以从上级变量接续的，即：单元格可从数据区域接续上，数据区域可从当前Sheet定义的变量进行接续。<br>
 实例：\$\[entity.id\]，表示该变量为entity对象的属性名称。<br>
 实例：\$\[:nnFlag,(Y=V)\]，其中(Y=V)表示导入/导出时进行数据转换的规则，即:<br>
 	- 导出时，如果对象的数据值为Y时Excel显示值为V；<br>
@@ -135,15 +135,15 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 - Project: [tcom-poi-example](https://github.com/ai-coders/tcom-poi/tree/master/poi-example)
 	- tcom-poi （依赖于以上Project）
 	- Junit 4.12
-	- fastjson 1.2.47 （导入/导出时所对应的数据Bean）
+	- fastjson 1.2.47 （导入/导出时，对数据Bean序列化及反序列化）
 
 ## 2. 设计思路
-- 源起：
+- 源起：<br>
 		Excel导入/导出是系统开发中常有的功能，常用做法：<br>
 		要么是依据业务需求直接硬编码，将数据产生、输出文件格式都写在程序逻辑之中，开发效率低且不好维护；<br>
 		另，还有通过对Bean的定义，通过注解对应Excel文件中的栏位，如果注解简单只能适应非常常规的功能；<br>
 		如果注解复杂，维护配置就变得异常复杂非常不直观。
-- 解题：
+- 解题：<br>
 		将数据与展示解耦，数据的产生（导出）、获取数据后的操作（导入）交给后台程序处理，而数据的展示交给Excel来进行配置。
 	
 ## 3. 应用程序开发
