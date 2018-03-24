@@ -1,14 +1,14 @@
 ﻿# Excel文件导入/导出工具
 GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 
-依据定义的Excel模板，结合程序生成相应的数据对象(POJO)，实现数据的导出为Excel文件；
+依据定义的Excel模板，结合程序生成的数据对象(POJO)，实现数据的导出为Excel文件；
 反之，将按Excel模板填写的文件，通过程序生成相应的数据对象(POJO)。
  
 # 一、使用步骤
 ## 1. 定义Excel导入/导出模板
 ### 1.1. 定义Excel导入/导出模板
         实例参见：tcom-poi\poi-example\data\Template\tbl_tpl.xlsx <br>
-》模板定义参见：[Excel模板定义说明](README.md#二excel模板定义)
+》  模板定义参见：[Excel模板定义说明](README.md#二excel模板定义)
 ### 1.2. 生成Excel导入/导出数据定义的配置文件
         通过Excel VBA读取模板定义，生成导入/导出数据定义的配置文件
         导入/导出VBA工具：tcom-poi\poi-example\data\Template\TplDefine2Xml.xlsm
@@ -41,7 +41,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 
 ### Excel模板由2大部分构成，即：
 ### (1) 模板控制区
-"模板控制区"，定义模板的控制信息，该控制区域为1~15行，在模板定义时必须按控制区域的格式进行维护，并且该区域的行和列不能增减，一般在模板定义完成后将该区域隐藏起来，但切记该区域**格式别动，只填内容！！！**控制参数的设定从B2单元格开始，具体含义如下：
+"模板控制区"，定义模板的控制信息，该控制区域为1~15行，在模板定义时必须按控制区域的格式进行维护，并且该区域的行和列不能增减，一般在模板定义完成后将该区域隐藏起来，但切记该区域**格式别动，只填内容！**控制参数的设定从B2单元格开始，具体含义如下：
 
 #### 1.1) Sheet定义
 
@@ -66,7 +66,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 
 |单元格| 示例 |    参数说明      |
 | ------ | ----- | ---------------- |
-|	F2	|	FK	|	数据区域Ideas，同Sheet内不能重复	|
+|	F2	|	FK	|	数据区域Id，同Sheet内不能重复	|
 |	F3	|	Row	|	区域填充类型，共有3种：<br>Fixed，填充方式为固定区域；<br>Row，以行方式进行填充，可以依据List数据按行进行动态填充；<br>Column，以列方式进行填充，可依据List数据按列进行动态填充	|
 |	F4	|	=B40	|	数据区域起始单元格，通过公式引用得到数据起始单元格；**在Excel操作时，千万不能将该单元格删除，否则会报错的！**	|
 |	F5	|	=AG48	|	数据区域结束单元格，结束单元格未设置【或】Row模式时与起始单元格为同一行【或】Column模式时与起始单元格为同一列，则在数据动态输出时不会复制模板所定义的行或列，而是直接向后覆盖！ **在Excel操作时，千万不能将该单元格删除，否则会报错的！**	|
@@ -77,32 +77,34 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 |	F10	|	3	|	模板行数/列	|
 |	F11	|	2	|	数据起始行/列(相对起始位)	|
 |	F12	|	\-1	|	数据结束行/列(相对结束位)	|
-|	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\},数据区域对应的变量名	|
-|	F14(保留)|	|		|
+|	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\}<br>，数据区域对应的变量名	|
+|	F14 |	|		|
 
 
 ### (2) 数据区域
 #### 2.1) 数据定义写在哪
 		导入/导出单元格对应数据数据定义的设置，既可以直接写在单元格之中，
 		当该单元格存在公式或者有数据校验无法将数据定义写入时，也可写在该单元格的备注内容上。
-		注意：数据定义必须以 $[ 开头,并且在备注内容上不能有作者信息，而是直接顶格填写定义内容。
+		注意：数据定义必须以 $[开头,并且在备注内容上不能有作者信息，而是直接顶格填写定义内容。
 	
 #### 2.2) 如何进行数据定义
-- 数据定义的组成元素有：<br>
-变量名，变量类名，该栏位是否不为空，子数据区的定义
+- 数据定义的组成元素<br>
+组成元素有：变量名，变量类名，该栏位是否不为空，子数据区的定义
 
 - 变量名定义<br>
 实例：\$\[:id\], 表示该变量为List中成员对象的属性名称，并且该情景下变量名是可以从上级变量续接的，即：单元格可从数据区域续接上，数据区域可从当前Sheet定义的变量进行续接。<br>
 实例：\$\[entity.id\]，表示该变量为entity对象的属性名称。<br>
-实例：\$\[:nnFlag,(Y=V)\]，其中(Y=V)表示导入/导出时进行数据转换的规则，即对象的数据值为Y时Excel显示值为V，导入时依据Excel的值转换为对象的数据值。
+实例：\$\[:nnFlag,(Y=V)\]，其中(Y=V)表示导入/导出时进行数据转换的规则，即:<br>
+	- 导出时，如果对象的数据值为Y时Excel显示值为V；<br>
+	- 导入时，依据Excel的值转换为对象的数据值，如果Excel的值为V，则转换为对象值为Y。
 
-- 变量类名
+- 变量类名<br>
 实例：\{\*net.aicoder.exsys.module.entity.TDevKeyAttribute\}，定义当前变量所属的Class，如果前面有\*号，表示该变量是List类型，可动态输出。
 
-- 该栏位是否不为空，固定值为：\<notNull="Y"\>
-该栏位是否不为空，表示：该字段作为数据导入时判断动态数据是否结束的标识。
+- 该栏位是否不为空，固定值为：\<notNull="Y"\><br>
+该栏位设置为不为空，则所对应的字段作为数据导入时判断动态数据是否结束的标识。
 
-- 子数据区的定义
+- 子数据区的定义<br>
 作为数据区域内部循环的子数据区的定义，含义与以上 [数据区域定义](https://github.com/ai-coders/tcom-poi#12--数据区域定义) 一致。<br>
 实例：\<Area id="FK.AR" fillModel="Column" beginCell="L42" endCell="V44" variable="\$\[entity.TDevEntRelationsForSrcEntId:TDevErAttributes\]\{\*net.aicoder.exsys.module.entity.TDevErAttribute\}" \>
 
@@ -127,7 +129,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 ----------
 # 三、程序开发
 ## 1. 所采用的技术栈
-- Project: [tcom-poi]
+- Project: [tcom-poi](https://github.com/ai-coders/tcom-poi/tree/master/poi-core)
 	- POI 3.13 （尝试采用最新版本POI 3.17，生成Excel文档报错Comment不能解析）
 	- Spring boot 2.0.0
 - Project: [tcom-poi-example](https://github.com/ai-coders/tcom-poi/tree/master/poi-example)
@@ -145,4 +147,4 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 		将数据与展示解耦，数据的产生（导出）、获取数据后的操作（导入）交给后台程序处理，而数据的展示交给Excel来进行配置。
 	
 ## 3. 应用程序开发
-		参见样例工程：[tcom-poi-example](https://github.com/ai-coders/tcom-poi/tree/master/poi-example)
+参见样例工程：[tcom-poi-example](https://github.com/ai-coders/tcom-poi/tree/master/poi-example)

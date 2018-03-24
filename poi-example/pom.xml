@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.aicoder</groupId>
-	<artifactId>tcom-poi-example</artifactId>
+	<artifactId>aicoder-tcom-poi-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -30,7 +30,7 @@
 <!-- AiCoder Begin -->	
 		<dependency>
 			<groupId>net.aicoder</groupId>
-			<artifactId>tcom-poi</artifactId>
+			<artifactId>aicoder-tcom-poi</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 <!-- AiCoder Begin -->	
