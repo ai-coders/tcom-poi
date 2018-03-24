@@ -1,6 +1,8 @@
 [B|b]ak/
 *.[B|b]bak
 target/
+classes/
+*.class
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
