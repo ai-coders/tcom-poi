@@ -45,7 +45,7 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 
 #### 1.1) Sheet定义
 
--|单元格|示例  |    参数说明      |
+|单元格|示例  |    参数说明      |
 | ---- | ---- | ---------------- |
 |	B2	|	\_TBL\_	|	Sheet定义之ID，多Sheet之间不能重复	|
 |	B3	|	区域填充类型	|	数据区定义的参数名称(仅提示用)	|
@@ -78,8 +78,6 @@ GitHub Project: [ai-coders/tcom-poi](https://github.com/ai-coders/tcom-poi)
 |	F11	|	2	|	数据起始行/列(相对起始位)	|
 |	F12	|	\-1	|	数据结束行/列(相对结束位)	|
 |	F13	|	见说明	|	\$\[entity.TDevEntRelationsForSrcEntId\]\{\*net.aicoder.exsys.module.entity.TDevEntRelation\}<br>，数据区域对应的变量名|
-|不需使用|  |该行无参数配置，写上这一条完全是为Readme文件排版更好看而已|
-
 
 ### (2) 数据区域
 #### 2.1) 数据定义写在哪
