@@ -3,9 +3,15 @@ package net.aicoder.tcom.poi.config;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import net.aicoder.tcom.poi.TcomPoiApplication;
 import net.aicoder.tcom.poi.config.Position;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = TcomPoiApplication.class)
 public class CellPositionTest {
 	@Test
 	public void testNull() {

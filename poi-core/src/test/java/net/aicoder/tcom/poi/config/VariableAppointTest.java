@@ -8,10 +8,16 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import net.aicoder.tcom.poi.TcomPoiApplication;
 import net.aicoder.tcom.poi.config.VariableAppoint;
 import net.aicoder.tcom.poi.config.VariableDefine;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = TcomPoiApplication.class)
 @SuppressWarnings("unused")
 public class VariableAppointTest {
 	private static final Log log = LogFactory
