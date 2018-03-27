@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>tcom-poi</name>
+	<name>aicoder-tcom-poi</name>
 	<description>Excel Export and Import</description>
 
 	<parent>
@@ -36,13 +36,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>fastjson</artifactId>
-		    <version>1.2.47</version>
 		</dependency>
 
 <!-- 	
@@ -80,6 +73,12 @@
 		</dependency>
 <!-- POI End -->		  
 
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.47</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

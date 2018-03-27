@@ -57,7 +57,8 @@ public abstract class AbstractWriter implements IWriter {
 		
     	//POI 3.13
         int iCellType = cell.getCellType();
-        CellType cellType = CellType.forInt(iCellType);
+        @SuppressWarnings("unused")
+		CellType cellType = CellType.forInt(iCellType);
         
         //POI 3.17
         //CellType srcCellType = srcCell.getCellTypeEnum();
@@ -95,7 +96,6 @@ public abstract class AbstractWriter implements IWriter {
 		return isHperLink;
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void writeComment(String commentStr) {
 		if (AiStringUtil.isEmpty(commentStr)) {
