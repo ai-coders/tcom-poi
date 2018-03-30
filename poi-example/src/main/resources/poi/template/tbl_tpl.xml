@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Book id="tbls" tplSheets="_LIST_,_TBL_" notImportSheets="Notes,TBL_LIST,_*_" >
+    <Sheet id="_LIST_" tplSheet="_LIST_" sheetName="TBL_LIST" >
+        <Area id="TL" fillModel="Row" beginCell="B17" endCell="N17" notNull="D17" titleNum="1" tplBegin="1" tplNum="1" dataBegin="1" variable="$[entityList]{*net.aicoder.exsys.module.entity.TDevEntity}" >
+            <Row no="18" >
+                <Cell  pos="B18" >$[:id]</Cell>
+                <Cell  pos="C18" >$[_COMMON.LIST_INDEX]</Cell>
+                <Cell  pos="D18" notNull="Y" >$[:code]</Cell>
+                <Cell  pos="E18" >$[:name]</Cell>
+                <Cell  pos="F18" >$[:notes]</Cell>
+                <Cell  pos="G18" >$[:sysCode]</Cell>
+                <Cell  pos="H18" >$[:modCode]</Cell>
+                <Cell  pos="I18" >$[:status]</Cell>
+                <Cell  pos="J18" >$[:version]</Cell>
+                <Cell  pos="K18" >$[:mName]</Cell>
+                <Cell  pos="L18" >$[:cTime]</Cell>
+                <Cell  pos="M18" >$[:mTime]</Cell>
+            </Row>
+        </Area>
+    </Sheet>
+    <Sheet id="_TBL_" variable="$[entity]" tplSheet="_TBL_" sheetName="$[entityList:code]" >
+        <Area id="TH" fillModel="Fixed" beginCell="B17" endCell="AG20" variable="$[entity]{net.aicoder.exsys.module.entity.TDevEntity}" >
+            <Row no="18" >
+                <Cell  pos="B18" >$[entity.id]</Cell>
+                <Cell  pos="C18" >$[entity.code]</Cell>
+                <Cell  pos="I18" >$[entity.name]</Cell>
+                <Cell  pos="N18" >$[entity.sysCode]</Cell>
+                <Cell  pos="P18" >$[entity.modCode]</Cell>
+                <Cell  pos="U18" >$[entity.status]</Cell>
+                <Cell  pos="W18" >$[entity.devVersion]</Cell>
+                <Cell  pos="Y18" >$[entity.cTime]</Cell>
+            </Row>
+            <Row no="20" >
+                <Cell  pos="C20" >$[entity.notes]</Cell>
+                <Cell  pos="P20" >$[entity.dbms]</Cell>
+                <Cell  pos="R20" >$[entity.owner]</Cell>
+                <Cell  pos="U20" >$[entity.mName]</Cell>
+                <Cell  pos="Y20" >$[entity.mTime]</Cell>
+            </Row>
+        </Area>
+        <Area id="TC" fillModel="Row" beginCell="B23" endCell="AG26" notNull="D23" titleNum="1" tplBegin="1" tplNum="1" dataBegin="1" dataEnd="-1" variable="$[entity.TDevAttributes]{*net.aicoder.exsys.module.entity.TDevAttribute}" >
+            <Row no="24" >
+                <Cell  pos="B24" >$[:id]</Cell>
+                <Cell  pos="C24" >$[:seq]</Cell>
+                <Cell  pos="D24" notNull="Y" >$[:code]</Cell>
+                <Cell  pos="I24" >$[:name]</Cell>
+                <Cell  pos="N24" >$[:dataType]</Cell>
+                <Cell  pos="P24" >$[:length]</Cell>
+                <Cell  pos="Q24" >$[:precise]</Cell>
+                <Cell  pos="R24" >$[:scale]</Cell>
+                <Cell  pos="S24" >$[:nnFlag,(Y=V)]</Cell>
+                <Cell  pos="T24" >$[:pkFlag,(Y=V)]</Cell>
+                <Cell  pos="U24" >$[:uqFlag,(Y=V)]</Cell>
+                <Cell  pos="V24" >$[:aiFlag]</Cell>
+                <Cell  pos="W24" >$[:dftValue]</Cell>
+                <Cell  pos="Y24" >$[:notes]</Cell>
+            </Row>
+        </Area>
+        <Area id="KEY" fillModel="Row" beginCell="B29" endCell="AG37" notNull="D29" titleNum="2" tplBegin="2" tplNum="3" dataBegin="2" dataEnd="-1" variable="$[entity.TDevEntKeys]{*net.aicoder.exsys.module.entity.TDevEntKey}" >
+            <Row no="31" >
+                <Cell  pos="B31" >$[:id]</Cell>
+                <Cell  pos="C31" >$[:type]</Cell>
+                <Cell  pos="D31" notNull="Y" >$[:code]</Cell>
+                <Cell  pos="N31" >$[:name]</Cell>
+                <Cell  pos="W31" >$[:clFlag]</Cell>
+                <Cell  pos="X31" >$[:orderFlag]</Cell>
+                <Cell  pos="Y31" >$[:notes]</Cell>
+            </Row>
+        <Area id="KEY.AR" fillModel="Column" beginCell="D32" endCell="V33" variable="$[entity.TDevEntKeys:TDevKeyAttributes]{*net.aicoder.exsys.module.entity.TDevKeyAttribute}" >
+            <Column no="4" >
+                <Cell  pos="D32" notNull="Y" >$[:TDevAttribute.code]</Cell>
+                <Cell  pos="D33" >$[:TDevAttribute.name]</Cell>
+            </Column>
+        </Area>
+        </Area>
+        <Area id="FK" fillModel="Row" beginCell="B40" endCell="AG48" notNull="D40" titleNum="2" tplBegin="2" tplNum="3" dataBegin="2" dataEnd="-1" variable="$[entity.TDevEntRelationsForSrcEntId]{*net.aicoder.exsys.module.entity.TDevEntRelation}" >
+            <Row no="42" >
+                <Cell  pos="B42" >$[:id]</Cell>
+                <Cell  pos="C42" >$[:type]</Cell>
+                <Cell  pos="D42" notNull="Y" >$[:srcKeyCode]</Cell>
+                <Cell  pos="I42" >$[:TDevEntityByDestEntId.code]</Cell>
+            </Row>
+        <Area id="FK.AR" fillModel="Column" beginCell="L42" endCell="V44" variable="$[entity.TDevEntRelationsForSrcEntId:TDevErAttributes]{*net.aicoder.exsys.module.entity.TDevErAttribute}" >
+            <Column no="12" >
+                <Cell  pos="L42" notNull="Y" >$[:TDevAttributeByDestAttrId.code]</Cell>
+                <Cell  pos="L43" >$[:TDevAttributeBySrcAttrId.code]</Cell>
+                <Cell  pos="L44" >$[:TDevAttributeBySrcAttrId.name]</Cell>
+            </Column>
+        </Area>
+            <Row no="42" >
+                <Cell  pos="W42" >$[:destMulti]</Cell>
+                <Cell  pos="X42" >$[:onDelete]</Cell>
+                <Cell  pos="Y42" >$[:notes]</Cell>
+            </Row>
+            <Row no="43" >
+                <Cell  pos="D43" >$[:srcKeyName]</Cell>
+                <Cell  pos="I43" >$[:destKeyCode]</Cell>
+                <Cell  pos="W43" >$[:srcMulti]</Cell>
+                <Cell  pos="X43" >$[:onUpdate]</Cell>
+            </Row>
+        </Area>
+    </Sheet>
+</Book>

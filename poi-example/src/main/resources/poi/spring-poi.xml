@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		
+	<context:component-scan base-package="net.aicoder.exsys.module.submodule.service.*">
+	</context:component-scan>
+	<context:component-scan base-package="net.aicoder.exsys.module.submodule.controller">
+	</context:component-scan>
+
+	<bean id="defaultDataContext" class="net.aicoder.tcom.poi.data.impl.DefaultDataContext"></bean>
+	
+	<!-- entityBookExporter begin -->
+	<bean id="entityBookExporter" class="net.aicoder.tcom.poi.excel.exporter.BookExporter" >
+		<property name="dataContext" ref="defaultDataContext" />
+		<property name="bookProperties">
+			<map>
+				<!-- <entry key="definePath" value="" /> -->
+				<!-- <entry key="defineShortPath" value="" /> -->
+				<entry key="defineFileName" value="tbl_tpl.xml" />
+				<!-- <entry key="tplPath" value="" /> -->
+				<!-- <entry key="tplShortPath" value="" /> -->
+				<entry key="tplFileName" value="tbl_tpl.xlsx" />
+				<!-- <entry key="outputPath" value="" /> -->
+				<!-- <entry key="outputShortPath" value="" /> -->
+				<entry key="outputFileName" value="$[sysCode]_tables.xlsx" />
+			</map>
+		</property>
+		<property name="sheetDataOpers">
+			<map>
+				<entry key="_LIST_" value-ref="entityListExpOper" />
+				<entry key="_TBL_" value-ref="entityDataExpOper" />
+			</map>
+		</property>
+	</bean>
+	<bean id="entityListExpOper" class="net.aicoder.exsys.module.submodule.dataoper.EntityListExpOper"></bean>
+	<bean id="entityDataExpOper" class="net.aicoder.exsys.module.submodule.dataoper.EntityDataExpOper"></bean>
+	<!-- entityBookExporter end -->
+	
+	<!-- entityBookImporter begin -->
+	<bean id="entityBookImporter" class="net.aicoder.tcom.poi.excel.importer.BookImporter" >
+		<property name="dataContext" ref="defaultDataContext" />
+		<property name="bookProperties">
+			<map>
+				<!-- <entry key="definePath" value="" /> -->
+				<!-- <entry key="defineShortPath" value="" /> -->
+				<entry key="defineFileName" value="tbl_tpl.xml" />
+				<!-- <entry key="inputPath" value="" /> -->
+				<!-- <entry key="inputShortPath" value="" /> -->
+				<entry key="inputFileName" value="$[sysCode]_tables.xlsx" />
+				<!-- <entry key="backupPath" value="" /> -->
+				<!-- <entry key="backupShortPath" value="" /> -->
+				<!-- <entry key="backupFileName" value="$[inputFileName]-$[YYYYMMDD]_$[HHMMSS]" /> -->
+			</map>
+		</property>
+		<property name="sheetDataOpers">
+			<map>
+				<entry key="_LIST_" value-ref="entityListImpOper" />
+				<entry key="_TBL_" value-ref="entityDataImpOper" />
+			</map>
+		</property>
+	</bean>
+	<bean id="entityListImpOper" class="net.aicoder.exsys.module.submodule.dataoper.EntityListImpOper"></bean>
+	<bean id="entityDataImpOper" class="net.aicoder.exsys.module.submodule.dataoper.EntityDataImpOper"></bean>
+	<!-- entityBookImporter end -->
+</beans>
