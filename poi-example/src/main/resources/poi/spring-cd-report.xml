@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		
+	<context:component-scan base-package="net.aicoder.cd.report.service.*">
+	</context:component-scan>
+	<context:component-scan base-package="net.aicoder.cd.report.controller">
+	</context:component-scan>
+
+	<bean id="defaultDataContext" class="net.aicoder.tcom.poi.data.impl.DefaultDataContext"></bean>
+	
+	<!-- cdPrjWeeklyReportExporter begin -->
+	<bean id="cdPrjWeeklyReportExporter" class="net.aicoder.tcom.poi.excel.exporter.BookExporter" >
+		<property name="dataContext" ref="defaultDataContext" />
+		<property name="bookProperties">
+			<map>
+				<!-- <entry key="definePath" value="" /> -->
+				<!-- <entry key="defineShortPath" value="" /> -->
+				<entry key="defineFileName" value="WeeklyReport-prjCode.xml" />
+				<!-- <entry key="tplPath" value="" /> -->
+				<!-- <entry key="tplShortPath" value="" /> -->
+				<entry key="tplFileName" value="WeeklyReport-prjCode.xlsx" />
+				<!-- <entry key="outputPath" value="" /> -->
+				<!-- <entry key="outputShortPath" value="" /> -->
+				<entry key="outputFileName" value="WeeklyReport-$[prjCode].xlsx" />
+			</map>
+		</property>
+		<property name="sheetDataOpers">
+			<map>
+				<entry key="PrjReqList" value-ref="prjReqListExpOper" />
+				<entry key="PrjTaskList" value-ref="prjTaskListExpOper" />
+			</map>
+		</property>
+	</bean>
+	<bean id="prjReqListExpOper" class="net.aicoder.cd.report.dataoper.PrjReqListExpOper"></bean>
+	<bean id="prjTaskListExpOper" class="net.aicoder.cd.report.dataoper.PrjTaskListExpOper"></bean>
+	<!-- cdPrjWeeklyReportExporter end -->
+
+</beans>

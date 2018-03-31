@@ -45,7 +45,7 @@ public class SheetExporter {
 	private Sheet tplSheet; //模板Sheet
 	private Sheet outSheet; //当前输出的Sheet
 
-	private Object repeatDataItem; //重复输出Sheet所依据的对象（List中的单个元素）
+	private Object sheetDataItem; //重复输出Sheet所依据的对象（List中的单个元素），20180331：repeatDataItem -》 sheetDataItem
 	private int repeatIndex = -1; //当前Sheet对应（List中的单个元素的序号）
 
 	private IDataContext dataContext; //上下文，包括输出数据OutData
@@ -92,7 +92,7 @@ public class SheetExporter {
 		if (elementNameVar != null
 				&& elementNameVar.getVariableDefine() != null) {
 			String key = elementNameVar.getVariableDefine().getVarName();
-			dataContext.putOneOutData(key, repeatDataItem); //repeatData为List中的单个元素数值
+			dataContext.putOneOutData(key, sheetDataItem); //repeatData为List中的单个元素数值
 		}
 
 		if (dataOper != null) {
@@ -105,6 +105,12 @@ public class SheetExporter {
 		if (dataOper != null) {
 			dataOper.setDataContext(dataContext);
 			dataOper.produce();
+			if (elementNameVar != null
+					&& elementNameVar.getVariableDefine() != null) {
+				String key = elementNameVar.getVariableDefine().getVarName();
+				sheetDataItem = dataContext.getOneOutData(key);
+				//dataContext.putOneOutData(key, sheetDataItem); //repeatData为List中的单个元素数值
+			}
 		}
 		
 		resetAreaDefine();
@@ -118,7 +124,7 @@ public class SheetExporter {
 			String areaId = areaDefine.getId();
 			AreaInfo areaInfo = this.areaInfoMap.get(areaId);
 
-			exportArea(areaInfo, repeatDataItem);
+			exportArea(areaInfo, sheetDataItem);
 		}
 
 		exportTerminate();
@@ -167,8 +173,8 @@ public class SheetExporter {
 			areaOriginPosition.setAreaPositionActual(areaPosition);
 			areaOriginPosition.setDataPositionActual(dataPosition);
 			log.debug("areaInfo >> id=" + areaInfo.getId() 
-			+ "AreaPositionActual =" + areaPosition.toString() 
-			+ "DataPositionActual =" + dataPosition.toString());
+			+ "; AreaPositionActual =" + areaPosition.toString() 
+			+ "; DataPositionActual =" + dataPosition.toString());
 			
 			eventEngine.addListener(areaInfo);
 			log.debug("addListener >>" + areaInfo.getId());
@@ -205,7 +211,7 @@ public class SheetExporter {
 			elderVarData = this.areaOutData(areaDefine, elderData);
 			elderVarDefine = varAppoint.getVariableDefine();
 		} else {
-			elderVarData = repeatDataItem;
+			elderVarData = sheetDataItem;
 			VariableAppoint elementNameVar = sheetDefine.getSheetVar();
 			VariableAppoint repeatByVar = sheetDefine.getRepeatByVar();
 			if (elementNameVar != null) {
@@ -470,8 +476,11 @@ public class SheetExporter {
 		Object dataObj = null;
 		Map<String, Object> outData = this.getDataContext().getOutData();
 		VariableAppoint areaDefaultVar = area.getAreaVarAppoint();
+		if (areaDefaultVar == null) { // 如果Area未定义变量，就获取Sheet定义的变量, By Stonethink 20180331
+			areaDefaultVar = sheetDefine.getSheetVar();
+			area.setAreaVarAppoint(areaDefaultVar);
+		}
 		if (areaDefaultVar != null) {
-			//Object elderVardata = repeatDataItem;
 			Object elderVardata = elderData;
 			VariableDefine elderVarDefine = null;
 			VariableAppoint elementNameVar = sheetDefine.getSheetVar(); //$[entity]
@@ -592,7 +601,7 @@ public class SheetExporter {
 		VariableAppoint sheetNameVar = sheetDefine.getSheetNameVar();
 		VariableAppoint sheetVar = sheetDefine.getSheetVar();
 
-		Object elderObj = repeatDataItem;
+		Object elderObj = sheetDataItem;
 		VariableDefine elderVarDefine = null;
 		if (repeatDataVar != null) {
 			elderVarDefine = repeatDataVar.getVariableDefine();
@@ -624,11 +633,11 @@ public class SheetExporter {
 	}
 
 	public Object getRepeatData() {
-		return repeatDataItem;
+		return sheetDataItem;
 	}
 
 	public void setRepeatData(Object repeatData) {
-		this.repeatDataItem = repeatData;
+		this.sheetDataItem = repeatData;
 	}
 
 	public int getRepeatIndex() {

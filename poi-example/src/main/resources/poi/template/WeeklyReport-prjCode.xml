@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Book id="wr" tplSheets="PrjReqList,PrjTaskList" >
+    <Sheet id="PrjReqList" tplSheet="PrjReqList" sheetName="PrjReqList" >
+        <Area id="RH" fillModel="Row" beginCell="B17" endCell="AJ17" titleNum="1" tplBegin="1" tplNum="1" dataBegin="1" variable="$[prjReqList]" >
+            <Row no="18" >
+                <Cell  pos="B18" >$[:storyId]</Cell>
+                <Cell  pos="C18" >$[:productId]</Cell>
+                <Cell  pos="D18" >$[:productName]</Cell>
+                <Cell  pos="E18" >$[:storyBranch]</Cell>
+                <Cell  pos="F18" >$[:module_id]</Cell>
+                <Cell  pos="G18" >$[:module_name]</Cell>
+                <Cell  pos="H18" >$[:story_title]</Cell>
+                <Cell  pos="I18" >$[:story_keywords]</Cell>
+                <Cell  pos="J18" >$[:story_type]</Cell>
+                <Cell  pos="K18" >$[:story_source]</Cell>
+                <Cell  pos="L18" >$[:story_sourceNote]</Cell>
+                <Cell  pos="M18" >$[:story_status]</Cell>
+                <Cell  pos="N18" >$[:story_stage]</Cell>
+                <Cell  pos="O18" >$[:story_plan]</Cell>
+                <Cell  pos="P18" >$[:productplan_title]</Cell>
+                <Cell  pos="Q18" >$[:story_version]</Cell>
+                <Cell  pos="R18" >$[:build_name]</Cell>
+                <Cell  pos="S18" >$[:story_pri]</Cell>
+                <Cell  pos="T18" >$[:project_id]</Cell>
+                <Cell  pos="U18" >$[:project_name]</Cell>
+                <Cell  pos="V18" >$[:story_estimate]</Cell>
+                <Cell  pos="W18" >$[:story_actureMD]</Cell>
+                <Cell  pos="X18" >$[:story_openedBy]</Cell>
+                <Cell  pos="Y18" >$[:story_openedDate]</Cell>
+                <Cell  pos="Z18" >$[:story_assignedTo]</Cell>
+                <Cell  pos="AA18" >$[:story_assignedDate]</Cell>
+                <Cell  pos="AB18" >$[:story_lastEditedBy]</Cell>
+                <Cell  pos="AC18" >$[:story_lastEditedDate]</Cell>
+                <Cell  pos="AD18" >$[:story_reviewedBy]</Cell>
+                <Cell  pos="AE18" >$[:story_reviewedDate]</Cell>
+                <Cell  pos="AF18" >$[:story_closedBy]</Cell>
+                <Cell  pos="AG18" >$[:story_childStories]</Cell>
+                <Cell  pos="AH18" >$[:story_linkStories]</Cell>
+                <Cell  pos="AI18" >$[:story_duplicateStory]</Cell>
+                <Cell  pos="AJ18" >$[:story_deleted]</Cell>
+            </Row>
+        </Area>
+    </Sheet>
+    <Sheet id="PrjTaskList" tplSheet="PrjTaskList" sheetName="PrjTaskList" >
+        <Area id="RH" fillModel="Row" beginCell="B17" endCell="AJ17" titleNum="1" tplBegin="1" tplNum="1" dataBegin="1" dataEnd="1" variable="$[prjTaskList]" >
+            <Row no="18" >
+                <Cell  pos="B18" >$[:taskId]</Cell>
+                <Cell  pos="C18" >$[:taskParentId]</Cell>
+                <Cell  pos="D18" >$[:taskPtype]</Cell>
+                <Cell  pos="E18" >$[:taskName]</Cell>
+                <Cell  pos="F18" >$[:taskType]</Cell>
+                <Cell  pos="G18" >$[:task_pri]</Cell>
+                <Cell  pos="H18" >$[:task_assignedTo]</Cell>
+                <Cell  pos="I18" >$[:task_estStarted]</Cell>
+                <Cell  pos="J18" >$[:task_deadline]</Cell>
+                <Cell  pos="K18" >$[:task_realStarted]</Cell>
+                <Cell  pos="L18" >$[:task_finishedDate]</Cell>
+                <Cell  pos="M18" >$[:task_estimate]</Cell>
+                <Cell  pos="N18" >$[:task_consumed]</Cell>
+                <Cell  pos="O18" >$[:task_left]</Cell>
+                <Cell  pos="P18" >$[:task_status]</Cell>
+                <Cell  pos="Q18" >$[:story_id]</Cell>
+                <Cell  pos="R18" >$[:story_title]</Cell>
+                <Cell  pos="S18" >$[:story_version]</Cell>
+                <Cell  pos="T18" >$[:bug_id]</Cell>
+                <Cell  pos="U18" >$[:bug_title]</Cell>
+                <Cell  pos="V18" >$[:project_id]</Cell>
+                <Cell  pos="W18" >$[:project_name]</Cell>
+                <Cell  pos="X18" >$[:module_id]</Cell>
+                <Cell  pos="Y18" >$[:module_name]</Cell>
+                <Cell  pos="Z18" >$[:task_openedDate]</Cell>
+                <Cell  pos="AA18" >$[:task_assignedDate]</Cell>
+                <Cell  pos="AB18" >$[:task_finishedBy]</Cell>
+                <Cell  pos="AC18" >$[:task_canceledBy]</Cell>
+                <Cell  pos="AD18" >$[:task_canceledDate]</Cell>
+                <Cell  pos="AE18" >$[:task_closedBy]</Cell>
+                <Cell  pos="AF18" >$[:task_closedDate]</Cell>
+                <Cell  pos="AG18" >$[:task_closedReason]</Cell>
+                <Cell  pos="AH18" >$[:task_lastEditedBy]</Cell>
+                <Cell  pos="AI18" >$[:task_lastEditedDate]</Cell>
+                <Cell  pos="AJ18" >$[:task_deleted]</Cell>
+            </Row>
+        </Area>
+    </Sheet>
+</Book>

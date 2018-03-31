@@ -1,9 +1,11 @@
 [B|b]ak/
 *.[B|b]bak
+log/
 target/
 classes/
 *.class
 !.mvn/wrapper/maven-wrapper.jar
+
 
 ### STS ###
 .apt_generated

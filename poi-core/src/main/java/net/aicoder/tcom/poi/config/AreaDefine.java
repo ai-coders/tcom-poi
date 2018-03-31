@@ -572,6 +572,11 @@ public class AreaDefine {
 		return areaVarAppoint;
 	}
 	
+	// Added by stone 20180331
+	public void setAreaVarAppoint(VariableAppoint areaVarAppoint) {
+		this.areaVarAppoint = areaVarAppoint;
+	}
+	
 	public AreaDefine getParentAreaDefine() {
 		return parentAreaDefine;
 	}
