@@ -468,8 +468,8 @@ public class SheetExporter {
 		DataWriter dataWriter = new DataWriter(outWorkbook, outSheet, row, cell);
 		String format = cellDefine.getPropertyVar().getVarFormat();
 		dataWriter.writeValue(propValue, format);
-		log.debug("writeCell>> row=" + rowNo + ";col=" + columnNo + ";value="
-				+ propValue);
+		log.debug("writeCell>> [" + rowNo + "," + columnNo + "]" + "config=" + cellDefine.getConfigStr() + "var="
+				+ cellDefine.getPropertyVar().dumpStr() + ";value=" + propValue);
 	}
 	
 	private Object areaOutData(AreaDefine area, Object elderData){
