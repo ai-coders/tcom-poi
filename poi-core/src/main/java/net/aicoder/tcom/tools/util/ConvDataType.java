@@ -9,6 +9,39 @@ import java.util.Date;
  */
 public class ConvDataType {
    	//Java的基本类型有八种：int, double, float, long, short, boolean, byte, char, void
+    public static Boolean toBoolean(Object in) throws Exception {
+        if (in == null || in instanceof Boolean) {
+            return (Boolean) in;
+        }
+        Boolean rtn = null;
+        String sIn = in.toString();
+        if (!sIn.trim().equals("")) {
+            rtn = new Boolean(sIn);
+        }
+        return rtn;
+    }
+
+   public static Integer toInteger(Object in) throws Exception {
+        if (in == null){
+        	int intRtn = 0;
+        	return intRtn;
+        }else if(in instanceof Integer) {
+            return (Integer) in;
+        }else if(in instanceof Double){
+        	Double douIn = (Double)in;
+        	return douIn.intValue();
+        }
+        
+        Integer rtn = null;
+        String sIn = in.toString();
+        if (sIn.trim().equals("")) {
+            rtn = new Integer(0);
+        } else {
+            rtn = new Integer(sIn);
+        }
+        return rtn;
+    }
+
     public static Long toLong(Object in) throws Exception {
         if (in == null){
         	long longRtn = 0;
@@ -30,28 +63,7 @@ public class ConvDataType {
         return rtn;
     }
 
-    public static Integer toInteger(Object in) throws Exception {
-        if (in == null){
-        	int intRtn = 0;
-        	return intRtn;
-        }else if(in instanceof Integer) {
-            return (Integer) in;
-        }else if(in instanceof Double){
-        	Double douIn = (Double)in;
-        	return douIn.intValue();
-        }
-        
-        Integer rtn = null;
-        String sIn = in.toString();
-        if (sIn.trim().equals("")) {
-            rtn = new Integer(0);
-        } else {
-            rtn = new Integer(sIn);
-        }
-        return rtn;
-    }
-
-    public static BigDecimal toBigDecimal(Object in) throws Exception {
+     public static BigDecimal toBigDecimal(Object in) throws Exception {
         if (in == null){
         	BigDecimal bigRtn = new BigDecimal(0);
         	return bigRtn;
@@ -64,30 +76,6 @@ public class ConvDataType {
             rtn = new BigDecimal(0);
         } else {
             rtn = new BigDecimal(sIn);
-        }
-        return rtn;
-    }
-
-    public static Date toDate(Object in) throws Exception {
-        if (in == null || in instanceof Date) {
-            return (Date) in;
-        }
-        Date rtn = null;
-        String sIn = in.toString();
-        if (!sIn.trim().equals("")) {
-            rtn = DateUtil.toDate(sIn);
-        }
-        return rtn;
-    }
-
-    public static Boolean toBoolean(Object in) throws Exception {
-        if (in == null || in instanceof Boolean) {
-            return (Boolean) in;
-        }
-        Boolean rtn = null;
-        String sIn = in.toString();
-        if (!sIn.trim().equals("")) {
-            rtn = new Boolean(sIn);
         }
         return rtn;
     }
@@ -106,6 +94,18 @@ public class ConvDataType {
         }
         return rtn;
 
+    }
+	
+    public static Date toDate(Object in) throws Exception {
+        if (in == null || in instanceof Date) {
+            return (Date) in;
+        }
+        Date rtn = null;
+        String sIn = in.toString();
+        if (!sIn.trim().equals("")) {
+            rtn = DateUtil.toDate(sIn);
+        }
+        return rtn;
     }
 
 	@SuppressWarnings("rawtypes")
